@@ -35,13 +35,13 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.sender = new System.Windows.Forms.TextBox();
             this.radListView1 = new Telerik.WinControls.UI.RadListView();
             this.body = new Telerik.WinControls.UI.RadRichTextEditor();
             this.subject = new Telerik.WinControls.UI.RadTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.radMultiColumnComboBox1 = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.office2013LightTheme1 = new Telerik.WinControls.Themes.Office2013LightTheme();
+            this.se = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -103,16 +103,6 @@
             this.radLabel1.TabIndex = 13;
             this.radLabel1.Text = "Получатель";
             this.radLabel1.ThemeName = "Office2013Light";
-            // 
-            // sender
-            // 
-            this.sender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.sender.Location = new System.Drawing.Point(47, 40);
-            this.sender.Multiline = true;
-            this.sender.Name = "sender";
-            this.sender.Size = new System.Drawing.Size(922, 46);
-            this.sender.TabIndex = 12;
             // 
             // radListView1
             // 
@@ -194,7 +184,7 @@
             this.radMultiColumnComboBox1.EditorControl.ShowGroupPanel = false;
             this.radMultiColumnComboBox1.EditorControl.Size = new System.Drawing.Size(240, 150);
             this.radMultiColumnComboBox1.EditorControl.TabIndex = 0;
-            this.radMultiColumnComboBox1.Location = new System.Drawing.Point(47, 21);
+            this.radMultiColumnComboBox1.Location = new System.Drawing.Point(47, 71);
             this.radMultiColumnComboBox1.Name = "radMultiColumnComboBox1";
             this.radMultiColumnComboBox1.Size = new System.Drawing.Size(922, 21);
             this.radMultiColumnComboBox1.TabIndex = 18;
@@ -203,11 +193,21 @@
             this.radMultiColumnComboBox1.Visible = false;
             this.radMultiColumnComboBox1.SelectedIndexChanged += new System.EventHandler(this.RadMultiColumnComboBox1_SelectedIndexChanged);
             // 
+            // se
+            // 
+            this.se.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.se.Location = new System.Drawing.Point(47, 22);
+            this.se.Multiline = true;
+            this.se.Name = "se";
+            this.se.Size = new System.Drawing.Size(922, 38);
+            this.se.TabIndex = 19;
+            // 
             // RadForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 638);
+            this.Controls.Add(this.se);
             this.Controls.Add(this.radMultiColumnComboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.radButton1);
@@ -215,7 +215,6 @@
             this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.sender);
             this.Controls.Add(this.radListView1);
             this.Controls.Add(this.body);
             this.Controls.Add(this.subject);
@@ -227,6 +226,7 @@
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Новое письмо ";
             this.ThemeName = "Office2013Light";
+            this.Load += new System.EventHandler(this.RadForm2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
@@ -251,12 +251,12 @@
         private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel1;
-        private System.Windows.Forms.TextBox sender;
         private Telerik.WinControls.UI.RadListView radListView1;
         private Telerik.WinControls.UI.RadRichTextEditor body;
         private Telerik.WinControls.UI.RadTextBox subject;
         private System.Windows.Forms.ListBox listBox1;
         private Telerik.WinControls.UI.RadMultiColumnComboBox radMultiColumnComboBox1;
         private Telerik.WinControls.Themes.Office2013LightTheme office2013LightTheme1;
+        private System.Windows.Forms.TextBox se;
     }
 }

@@ -38,13 +38,14 @@ namespace TelerikTest
             var message = inbox.GetMessage(num);
             if (status == 0)
             {
-                sender.Text = message.From.OfType<MailboxAddress>().First().Address;
+                se.Text = message.From.OfType<MailboxAddress>().First().Address;
                 ConnectedMail = connMail; ;
                 subject.Text = "Re: " + message.Subject;
             }
             else
             {
-                sender.Visible = false;
+               // se.Visible = false;
+              
                 radMultiColumnComboBox1.Visible = true;
                 ConnectedMail = connMail;
 
@@ -54,7 +55,7 @@ namespace TelerikTest
                 radMultiColumnComboBox1.Columns[0].HeaderText = "Сохраненные Адресаты";
                 radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width-25;
             }
-
+            se.Text = "";
 
         }
         public RadForm2(IMailFolder inbox, int num, string connMail, ImapClient mclient, string password, int status,string TO)
@@ -67,13 +68,13 @@ namespace TelerikTest
             var message = inbox.GetMessage(num);
             if (status == 0)
             {
-                sender.Text = TO;
+                se.Text = TO;
                 ConnectedMail = connMail; ;
                // subject.Text = "Re: " + message.Subject;
             }
             else
             {
-                sender.Visible = false;
+                se.Visible = false;
                 radMultiColumnComboBox1.Visible = true;
                 ConnectedMail = connMail;
 
@@ -89,9 +90,10 @@ namespace TelerikTest
 
         private void RadButton1_Click(object sender, EventArgs e)
         {
+            
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(ConnectedMail));
-            var ss = this.sender.Text.Split(';');
+            var ss = this.se.Text.Split(';');
             foreach (var d in ss)
             {
                 message.To.Add(new MailboxAddress(d));
@@ -128,9 +130,9 @@ namespace TelerikTest
             mailclient.GetFolder(SpecialFolder.Sent).Append(FormatOptions.Default, message);
 
             var s = File.ReadAllLines("MyMail.txt");
-            if (!s.Contains(this.sender.Text))
+            if (!s.Contains(this.se.Text))
             {
-                File.AppendAllText("Mymail.txt", this.sender.Text + "\n");
+                File.AppendAllText("Mymail.txt", this.se.Text + "\n");
             }
 
             MessageBox.Show("Письмо отправлено");
@@ -165,7 +167,7 @@ namespace TelerikTest
 
         private void RadMultiColumnComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.sender.Text = radMultiColumnComboBox1.Text;
+            this.se.Text += ";"+radMultiColumnComboBox1.Text;
         }
 
         private void RadListView1_DragDrop(object sender, DragEventArgs e)
@@ -183,6 +185,11 @@ namespace TelerikTest
         private void RadListView1_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.All;
+        }
+
+        private void RadForm2_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -11,6 +11,7 @@ using System.Threading;
 using System.Windows.Forms;
 using MailKit;
 using MailKit.Net.Imap;
+using Microsoft.Win32;
 using MimeKit;
 using MimeKit.Text;
 using Telerik.WinControls;
@@ -92,21 +93,23 @@ namespace TelerikTest
         {
             if (e.Button == MouseButtons.Right)
             {
-              //  radContextMenu1.Show(radListView1, new Point(e.X, e.Y));
+                radContextMenu1.Show(listView1, new Point(e.X, e.Y));
             }
         }
 
         private void radMenuItem1_Click(object sender, System.EventArgs e)
         {
+           
             var message = inbox.GetMessage(Numbermessage);
-
-            foreach (var attachment in message.Attachments)
-            {
-                if (listView1.SelectedItems[0].Text != attachment.ContentType.Name)
-                    continue;
-                FolderBrowserDialog fb = new FolderBrowserDialog();
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+           
+               
                 if (fb.ShowDialog() == DialogResult.OK)
                 {
+                    foreach (var attachment in message.Attachments)
+                    {
+                        if (!listView1.SelectedItems.Contains(listView1.FindItemWithText(attachment.ContentType.Name)))
+                            continue;
                     using (var stream = File.Create(fb.SelectedPath + "\\" + attachment.ContentType.Name))
                     {
                         if (attachment is MessagePart)
@@ -167,6 +170,7 @@ namespace TelerikTest
                         var part = (MessagePart)attachment;
 
                         part.Message.WriteTo(stream);
+                        
                     }
                     else
                     {
@@ -175,6 +179,27 @@ namespace TelerikTest
                         part.Content.DecodeTo(stream);
                     }
                 }
+
+                var download = Registry
+                    .GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
+                        "{374DE290-123F-4565-9164-39C4925E467B}", String.Empty).ToString();
+                using (var stream = File.Create(download + "\\" + attachment.ContentType.Name))
+                {
+                    if (attachment is MessagePart)
+                    {
+                        var part = (MessagePart)attachment;
+
+                        part.Message.WriteTo(stream);
+
+                    }
+                    else
+                    {
+                        var part = (MimePart)attachment;
+
+                        part.Content.DecodeTo(stream);
+                    }
+                }
+
             }
             DragDropEffects dde1 = DoDragDrop(listView1.SelectedItems.ToString(), DragDropEffects.All);
         }

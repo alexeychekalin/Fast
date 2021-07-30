@@ -166,6 +166,7 @@
             this.listView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListView1_DragEnter);
             this.listView1.DragLeave += new System.EventHandler(this.listView1_DragLeave);
             this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
+            this.radMenuItem1.MouseDown+= new System.Windows.Forms.MouseEventHandler(this.radMenuItem1_Click);
             // 
             // MailMessage
             // 
