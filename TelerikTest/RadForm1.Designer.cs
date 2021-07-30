@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RadForm1));
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.radSplitContainer2 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel3 = new Telerik.WinControls.UI.SplitPanel();
@@ -45,6 +45,12 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.chatname = new Telerik.WinControls.UI.RadTextBox();
             this.splitPanel4 = new Telerik.WinControls.UI.SplitPanel();
+            this.radListView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.radButton10 = new Telerik.WinControls.UI.RadButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -59,9 +65,6 @@
             this.radButton7 = new Telerik.WinControls.UI.RadButton();
             this.radButton6 = new Telerik.WinControls.UI.RadButton();
             this.findbox = new Telerik.WinControls.UI.RadTextBox();
-            this.radListView1 = new Telerik.WinControls.UI.RadListView();
-            this.radWaitingBar1 = new Telerik.WinControls.UI.RadWaitingBar();
-            this.lineRingWaitingBarIndicatorElement2 = new Telerik.WinControls.UI.LineRingWaitingBarIndicatorElement();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.radButton4 = new Telerik.WinControls.UI.RadButton();
             this.radSplitContainer3 = new Telerik.WinControls.UI.RadSplitContainer();
@@ -86,6 +89,7 @@
             this.office2013LightTheme1 = new Telerik.WinControls.Themes.Office2013LightTheme();
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.office2013DarkTheme1 = new Telerik.WinControls.Themes.Office2013DarkTheme();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer2)).BeginInit();
             this.radSplitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).BeginInit();
@@ -115,9 +119,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.findbox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).BeginInit();
-            this.radListView1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer3)).BeginInit();
             this.radSplitContainer3.SuspendLayout();
@@ -232,7 +233,7 @@
             this.keybox.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.keybox.EditorControl.MasterTemplate.EnableGrouping = false;
             this.keybox.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.keybox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.keybox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
             this.keybox.EditorControl.Name = "NestedRadGridView";
             this.keybox.EditorControl.ReadOnly = true;
             this.keybox.EditorControl.ShowGroupPanel = false;
@@ -309,6 +310,7 @@
             // 
             // splitPanel4
             // 
+            this.splitPanel4.Controls.Add(this.radListView1);
             this.splitPanel4.Controls.Add(this.radButton10);
             this.splitPanel4.Controls.Add(this.button2);
             this.splitPanel4.Controls.Add(this.button1);
@@ -322,7 +324,6 @@
             this.splitPanel4.Controls.Add(this.radButton7);
             this.splitPanel4.Controls.Add(this.radButton6);
             this.splitPanel4.Controls.Add(this.findbox);
-            this.splitPanel4.Controls.Add(this.radListView1);
             this.splitPanel4.Controls.Add(this.listBox2);
             this.splitPanel4.Controls.Add(this.radButton4);
             this.splitPanel4.Location = new System.Drawing.Point(0, 387);
@@ -338,10 +339,61 @@
             this.splitPanel4.TabStop = false;
             this.splitPanel4.Text = "splitPanel4";
             // 
+            // radListView1
+            // 
+            this.radListView1.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.radListView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
+            this.radListView1.FullRowSelect = true;
+            this.radListView1.HideSelection = false;
+            this.radListView1.Location = new System.Drawing.Point(31, 134);
+            this.radListView1.Name = "radListView1";
+            this.radListView1.Scrollable = false;
+            this.radListView1.Size = new System.Drawing.Size(346, 437);
+            this.radListView1.SmallImageList = this.imageList3;
+            this.radListView1.TabIndex = 1;
+            this.radListView1.UseCompatibleStateImageBehavior = false;
+            this.radListView1.View = System.Windows.Forms.View.Details;
+            this.radListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.RadListView1_MouseDoubleClick);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.DisplayIndex = 3;
+            this.columnHeader1.Text = "";
+            this.columnHeader1.Width = 82;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.DisplayIndex = 0;
+            this.columnHeader2.Text = "Отправитель";
+            this.columnHeader2.Width = 153;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.DisplayIndex = 1;
+            this.columnHeader3.Text = "Тема";
+            this.columnHeader3.Width = 89;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.DisplayIndex = 2;
+            this.columnHeader4.Text = "Дата";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader4.Width = 79;
+            // 
+            // imageList3
+            // 
+            this.imageList3.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList3.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList3.TransparentColor = System.Drawing.Color.Transparent;
+            // 
             // radButton10
             // 
             this.radButton10.BackColor = System.Drawing.Color.White;
-            this.radButton10.Location = new System.Drawing.Point(354, 14);
+            this.radButton10.Location = new System.Drawing.Point(146, 41);
             this.radButton10.Name = "radButton10";
             this.radButton10.Size = new System.Drawing.Size(25, 21);
             this.radButton10.TabIndex = 26;
@@ -349,29 +401,35 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(9, 339);
+            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button2.Location = new System.Drawing.Point(3, 275);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 25;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Visible = false;
+            this.toolTip1.SetToolTip(this.button2, "Ответить всем");
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.Button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(9, 303);
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.button1.Location = new System.Drawing.Point(3, 241);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 24;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
+            this.toolTip1.SetToolTip(this.button1, "Ответить");
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // radButton3
             // 
             this.radButton3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radButton3.Controls.Add(this.radButton9);
-            this.radButton3.Location = new System.Drawing.Point(240, 40);
+            this.radButton3.Location = new System.Drawing.Point(146, 78);
             this.radButton3.Name = "radButton3";
             this.radButton3.Size = new System.Drawing.Size(134, 24);
             this.radButton3.TabIndex = 22;
@@ -390,28 +448,34 @@
             // 
             // outcomeMessage
             // 
-            this.outcomeMessage.Location = new System.Drawing.Point(9, 134);
+            this.outcomeMessage.BackColor = System.Drawing.Color.White;
+            this.outcomeMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("outcomeMessage.BackgroundImage")));
+            this.outcomeMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.outcomeMessage.Location = new System.Drawing.Point(3, 134);
             this.outcomeMessage.Name = "outcomeMessage";
-            this.outcomeMessage.Size = new System.Drawing.Size(30, 30);
+            this.outcomeMessage.Size = new System.Drawing.Size(25, 25);
             this.outcomeMessage.TabIndex = 23;
-            this.outcomeMessage.UseVisualStyleBackColor = true;
-            this.outcomeMessage.Visible = false;
+            this.toolTip1.SetToolTip(this.outcomeMessage, "Исходящие");
+            this.outcomeMessage.UseVisualStyleBackColor = false;
             this.outcomeMessage.Click += new System.EventHandler(this.OutcomeMessage_Click);
             // 
             // incomeMessage
             // 
-            this.incomeMessage.Location = new System.Drawing.Point(8, 98);
+            this.incomeMessage.BackColor = System.Drawing.Color.White;
+            this.incomeMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("incomeMessage.BackgroundImage")));
+            this.incomeMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.incomeMessage.Location = new System.Drawing.Point(2, 108);
             this.incomeMessage.Name = "incomeMessage";
-            this.incomeMessage.Size = new System.Drawing.Size(30, 30);
+            this.incomeMessage.Size = new System.Drawing.Size(25, 25);
             this.incomeMessage.TabIndex = 0;
-            this.incomeMessage.UseVisualStyleBackColor = true;
-            this.incomeMessage.Visible = false;
+            this.toolTip1.SetToolTip(this.incomeMessage, "Входящие");
+            this.incomeMessage.UseVisualStyleBackColor = false;
             this.incomeMessage.Click += new System.EventHandler(this.IncomeMessage_Click);
             // 
             // disconnectbutton
             // 
             this.disconnectbutton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.disconnectbutton.Location = new System.Drawing.Point(9, 40);
+            this.disconnectbutton.Location = new System.Drawing.Point(9, 78);
             this.disconnectbutton.Name = "disconnectbutton";
             this.disconnectbutton.Size = new System.Drawing.Size(131, 24);
             this.disconnectbutton.TabIndex = 15;
@@ -424,23 +488,24 @@
             // 
             this.radButton5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radButton5.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
+            this.radButton5.Image = ((System.Drawing.Image)(resources.GetObject("radButton5.Image")));
             this.radButton5.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton5.Location = new System.Drawing.Point(9, 225);
+            this.radButton5.Location = new System.Drawing.Point(3, 210);
             this.radButton5.Name = "radButton5";
-            this.radButton5.Size = new System.Drawing.Size(30, 30);
+            this.radButton5.Size = new System.Drawing.Size(25, 25);
             this.radButton5.TabIndex = 19;
             this.radButton5.Text = "Написать письмо";
             this.radButton5.ThemeName = "Office2013Light";
-            this.radButton5.Visible = false;
+            this.toolTip1.SetToolTip(this.radButton5, "Написать письмо");
             this.radButton5.Click += new System.EventHandler(this.RadButton5_Click);
             // 
             // passbox
             // 
             this.passbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.passbox.Location = new System.Drawing.Point(200, 14);
+            this.passbox.Location = new System.Drawing.Point(9, 41);
             this.passbox.Name = "passbox";
             this.passbox.PasswordChar = '*';
-            this.passbox.Size = new System.Drawing.Size(156, 21);
+            this.passbox.Size = new System.Drawing.Size(140, 21);
             this.passbox.TabIndex = 14;
             this.passbox.ThemeName = "Office2013Light";
             // 
@@ -462,7 +527,7 @@
             this.loginbox.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.loginbox.EditorControl.MasterTemplate.EnableGrouping = false;
             this.loginbox.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.loginbox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
+            this.loginbox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
             this.loginbox.EditorControl.Name = "NestedRadGridView";
             this.loginbox.EditorControl.ReadOnly = true;
             this.loginbox.EditorControl.ShowGroupPanel = false;
@@ -470,7 +535,7 @@
             this.loginbox.EditorControl.TabIndex = 0;
             this.loginbox.Location = new System.Drawing.Point(8, 14);
             this.loginbox.Name = "loginbox";
-            this.loginbox.Size = new System.Drawing.Size(188, 21);
+            this.loginbox.Size = new System.Drawing.Size(365, 21);
             this.loginbox.TabIndex = 12;
             this.loginbox.TabStop = false;
             this.loginbox.ThemeName = "Office2013Light";
@@ -480,22 +545,25 @@
             // 
             this.radButton7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radButton7.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
-            this.radButton7.Location = new System.Drawing.Point(8, 399);
+            this.radButton7.Image = ((System.Drawing.Image)(resources.GetObject("radButton7.Image")));
+            this.radButton7.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton7.Location = new System.Drawing.Point(3, 306);
             this.radButton7.Name = "radButton7";
-            this.radButton7.Size = new System.Drawing.Size(30, 30);
+            this.radButton7.Size = new System.Drawing.Size(25, 25);
             this.radButton7.TabIndex = 17;
             this.radButton7.Text = "Удалить выбранные";
             this.radButton7.ThemeName = "Office2013Light";
-            this.radButton7.Visible = false;
+            this.toolTip1.SetToolTip(this.radButton7, "Удалить");
             this.radButton7.Click += new System.EventHandler(this.RadButton7_Click);
             // 
             // radButton6
             // 
             this.radButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radButton6.Image = ((System.Drawing.Image)(resources.GetObject("radButton6.Image")));
-            this.radButton6.Location = new System.Drawing.Point(348, 68);
+            this.radButton6.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton6.Location = new System.Drawing.Point(354, 112);
             this.radButton6.Name = "radButton6";
-            this.radButton6.Size = new System.Drawing.Size(26, 22);
+            this.radButton6.Size = new System.Drawing.Size(26, 21);
             this.radButton6.TabIndex = 21;
             this.radButton6.ThemeName = "Office2013Light";
             this.radButton6.Visible = false;
@@ -504,74 +572,37 @@
             // findbox
             // 
             this.findbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.findbox.Location = new System.Drawing.Point(39, 69);
+            this.findbox.Location = new System.Drawing.Point(39, 112);
             this.findbox.Name = "findbox";
-            this.findbox.Size = new System.Drawing.Size(304, 21);
+            this.findbox.Size = new System.Drawing.Size(317, 21);
             this.findbox.TabIndex = 20;
             this.findbox.ThemeName = "Office2013Light";
             this.findbox.Visible = false;
-            // 
-            // radListView1
-            // 
-            this.radListView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radListView1.CheckBoxesAlignment = Telerik.WinControls.UI.CheckBoxesAlignment.Near;
-            this.radListView1.Controls.Add(this.radWaitingBar1);
-            this.radListView1.Font = new System.Drawing.Font("Arial", 10F);
-            this.radListView1.Location = new System.Drawing.Point(39, 98);
-            this.radListView1.Name = "radListView1";
-            this.radListView1.ShowCheckBoxes = true;
-            this.radListView1.Size = new System.Drawing.Size(338, 435);
-            this.radListView1.TabIndex = 13;
-            this.radListView1.ThemeName = "Office2013Light";
-            this.radListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.RadListView1_MouseDoubleClick);
-            // 
-            // radWaitingBar1
-            // 
-            this.radWaitingBar1.AssociatedControl = this.radListView1;
-            this.radWaitingBar1.Location = new System.Drawing.Point(145, 177);
-            this.radWaitingBar1.Name = "radWaitingBar1";
-            this.radWaitingBar1.Size = new System.Drawing.Size(70, 70);
-            this.radWaitingBar1.TabIndex = 0;
-            this.radWaitingBar1.Text = "radWaitingBar1";
-            this.radWaitingBar1.Visible = false;
-            this.radWaitingBar1.WaitingIndicators.Add(this.lineRingWaitingBarIndicatorElement2);
-            this.radWaitingBar1.WaitingSpeed = 50;
-            this.radWaitingBar1.WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.LineRing;
-            ((Telerik.WinControls.UI.RadWaitingBarElement)(this.radWaitingBar1.GetChildAt(0))).WaitingSpeed = 50;
-            ((Telerik.WinControls.UI.WaitingBarContentElement)(this.radWaitingBar1.GetChildAt(0).GetChildAt(0))).WaitingStyle = Telerik.WinControls.Enumerations.WaitingBarStyles.LineRing;
-            ((Telerik.WinControls.UI.WaitingBarSeparatorElement)(this.radWaitingBar1.GetChildAt(0).GetChildAt(0).GetChildAt(0))).Dash = false;
-            // 
-            // lineRingWaitingBarIndicatorElement2
-            // 
-            this.lineRingWaitingBarIndicatorElement2.Name = "lineRingWaitingBarIndicatorElement2";
-            this.lineRingWaitingBarIndicatorElement2.UseCompatibleTextRendering = false;
             // 
             // listBox2
             // 
             this.listBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(223, 537);
+            this.listBox2.Location = new System.Drawing.Point(9, 537);
             this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(120, 30);
+            this.listBox2.Size = new System.Drawing.Size(24, 30);
             this.listBox2.TabIndex = 18;
             this.listBox2.Visible = false;
             // 
             // radButton4
             // 
-            this.radButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.radButton4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("radButton4.BackgroundImage")));
+            this.radButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.radButton4.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
             this.radButton4.EnableAnalytics = false;
+            this.radButton4.Image = ((System.Drawing.Image)(resources.GetObject("radButton4.Image")));
             this.radButton4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton4.Location = new System.Drawing.Point(9, 170);
+            this.radButton4.Location = new System.Drawing.Point(3, 160);
             this.radButton4.Name = "radButton4";
-            this.radButton4.Size = new System.Drawing.Size(30, 30);
+            this.radButton4.Size = new System.Drawing.Size(25, 25);
             this.radButton4.TabIndex = 16;
-            this.radButton4.Text = "Обновить";
             this.radButton4.ThemeName = "Office2013Light";
-            this.radButton4.Visible = false;
+            this.toolTip1.SetToolTip(this.radButton4, "Обновить");
             this.radButton4.Click += new System.EventHandler(this.RadButton4_Click);
             // 
             // radSplitContainer3
@@ -880,9 +911,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.findbox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).EndInit();
-            this.radListView1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radWaitingBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer3)).EndInit();
             this.radSplitContainer3.ResumeLayout(false);
@@ -938,7 +966,6 @@
         private Telerik.WinControls.UI.RadButton radButton7;
         private Telerik.WinControls.UI.RadButton radButton6;
         private Telerik.WinControls.UI.RadTextBox findbox;
-        private Telerik.WinControls.UI.RadListView radListView1;
         private Telerik.WinControls.UI.RadButton radButton5;
         private System.Windows.Forms.ListBox listBox2;
         private Telerik.WinControls.UI.RadButton radButton4;
@@ -962,9 +989,14 @@
         private System.Windows.Forms.Button incomeMessage;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private Telerik.WinControls.UI.RadWaitingBar radWaitingBar1;
-        private Telerik.WinControls.UI.LineRingWaitingBarIndicatorElement lineRingWaitingBarIndicatorElement2;
         private Telerik.WinControls.UI.RadButton radButton10;
         private Telerik.WinControls.UI.RadButton radButton11;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ImageList imageList3;
+        private System.Windows.Forms.ListView radListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }

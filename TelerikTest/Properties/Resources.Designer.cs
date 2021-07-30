@@ -63,26 +63,6 @@ namespace TelerikTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap answer_to_all {
-            get {
-                object obj = ResourceManager.GetObject("answer_to_all", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap answer_to_letter {
-            get {
-                object obj = ResourceManager.GetObject("answer_to_letter", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap bin {
             get {
                 object obj = ResourceManager.GetObject("bin", resourceCulture);
@@ -113,9 +93,9 @@ namespace TelerikTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap incomemessagea {
+        internal static System.Drawing.Bitmap gtk_refresh_2705 {
             get {
-                object obj = ResourceManager.GetObject("incomemessagea", resourceCulture);
+                object obj = ResourceManager.GetObject("gtk-refresh_2705", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +103,59 @@ namespace TelerikTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outcomemessage {
+        internal static System.Drawing.Bitmap incomemessagea1 {
             get {
-                object obj = ResourceManager.GetObject("outcomemessage", resourceCulture);
+                object obj = ResourceManager.GetObject("incomemessagea1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap incomemessagea11 {
+            get {
+                object obj = ResourceManager.GetObject("incomemessagea11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mail_outbox_1642 {
+            get {
+                object obj = ResourceManager.GetObject("mail-outbox_1642", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mail_replay_7242 {
+            get {
+                object obj = ResourceManager.GetObject("mail_replay_7242", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mail_replayall_2860 {
+            get {
+                object obj = ResourceManager.GetObject("mail_replayall_2860", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pen_2378 {
+            get {
+                object obj = ResourceManager.GetObject("pen_2378", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,39 +193,9 @@ namespace TelerikTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap trash1 {
+        internal static System.Drawing.Bitmap trash_9377 {
             get {
-                object obj = ResourceManager.GetObject("trash1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap upload {
-            get {
-                object obj = ResourceManager.GetObject("upload", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap upload1 {
-            get {
-                object obj = ResourceManager.GetObject("upload1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap write_a_letter {
-            get {
-                object obj = ResourceManager.GetObject("write_a_letter", resourceCulture);
+                object obj = ResourceManager.GetObject("trash_9377", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -341,14 +341,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="launcher_Icon1.ico" />
+    <None Include="Resources\mail_replayall_2860.bmp" />
+    <None Include="Resources\mail_replay_7242.bmp" />
+    <None Include="Resources\trash_9377.bmp" />
+    <None Include="Resources\pen_2378.bmp" />
+    <None Include="Resources\gtk-refresh_2705.bmp" />
+    <None Include="Resources\mail-outbox_1642.bmp" />
+    <None Include="Resources\incomemessagea11.bmp" />
+    <None Include="Resources\incomemessagea1.bmp" />
     <None Include="Resources\seo-social-web-network-internet_232_icon-icons.com_615421.png" />
-    <None Include="Resources\outcomemessage.png" />
-    <None Include="Resources\incomemessagea.png" />
-    <None Include="Resources\answer_to_all.jpg" />
-    <None Include="Resources\answer_to_letter.jpg" />
-    <None Include="Resources\write_a_letter.jpg" />
-    <None Include="Resources\trash.jpg" />
-    <None Include="Resources\upload.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>

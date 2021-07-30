@@ -67,8 +67,9 @@ namespace TelerikTest
             RichTextBoxLocalizationProvider.CurrentProvider = RichTextBoxLocalizationProvider.FromFile(@"localization.word.xml");
             SpreadsheetLocalizationProvider.CurrentProvider = SpreadsheetLocalizationProvider.FromFile(@"localization.excel.xml");
             InitializeComponent();
-            //Подтягиваем сохраненные email
-            var s = File.ReadAllLines("SavedMail.txt");
+            imageList3.Images.Add(new Bitmap("вложение.png"));
+           //Подтягиваем сохраненные email
+           var s = File.ReadAllLines("SavedMail.txt");
             try
             {
                 loginbox.DataSource = s.Select(x => new { StrValue = x.Substring(0, x.IndexOf(" ")) }).ToList(); ;
@@ -151,14 +152,7 @@ namespace TelerikTest
             }
 
             // end восстановление файлов
-            this.incomeMessage.Image = Resources.incomemessagea;
-            outcomeMessage.Image = Resources.outcomemessage;
-            radButton4.Image = Resources.upload1;
-            radButton5.Image = Resources.write_a_letter;
-            button1.Image = Resources.answer_to_letter;
-            button2.Image = Resources.answer_to_all;
-            radButton7.Image = Resources.trash1;
-            radButton10.Image = Resources.seo_social_web_network_internet_232_icon_icons1;
+           
         }
 
         // FOLDER панель
@@ -821,12 +815,12 @@ namespace TelerikTest
                 }
                 if (message.Attachments.Count() > 0)
                 {
-                    radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                    //radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
                   
-                    radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
-                        TextImageRelation.TextBeforeImage;
-                    radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
-                    radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
+                   // radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
+                        //TextImageRelation.TextBeforeImage;
+                    //radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
+                   // radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
                 }
                 listBox2.Items.Add(i);
             }
@@ -875,7 +869,7 @@ namespace TelerikTest
 
         private void RadListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MailMessage m = new MailMessage(mailclient, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndex]), ConnectedMail, pass);
+            MailMessage m = new MailMessage(mailclient, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndices[0]]), ConnectedMail, pass);
             m.Show();
         }
 
@@ -896,7 +890,7 @@ namespace TelerikTest
                         radListView1.Items.Add(message.Subject);
                         if (message.Attachments.Count() > 0)
                         {
-                            radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                            //radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
                         }
 
                         listBox2.Items.Add(i);
@@ -917,7 +911,7 @@ namespace TelerikTest
                     radListView1.Items.Add(message.Subject);
                     if (message.Attachments.Count() != 0)
                     {
-                        radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                       // radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
                     }
                 }
             }
@@ -929,7 +923,7 @@ namespace TelerikTest
             inbox.Open(FolderAccess.ReadWrite);
             for (int i = radListView1.Items.Count - 1; i >= 0; i--)
             {
-                if (radListView1.Items[i].CheckState == ToggleState.On)
+                if (radListView1.Items[i].Checked == true)
                 {
                     inbox.AddFlags(System.Convert.ToInt32(listBox2.Items[i]), MessageFlags.Deleted, true);
                 }
@@ -945,7 +939,7 @@ namespace TelerikTest
                 radListView1.Items.Add(message.Subject);
                 if (message.Attachments.Count() != 0)
                 {
-                    radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                   // radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
                 }
             }
         }
@@ -969,9 +963,7 @@ namespace TelerikTest
 
         private void radButton3_Click_1(object sender, EventArgs e)
         {
-            radWaitingBar1.AssociatedControl = radListView1;
-            radWaitingBar1.Show();
-            radWaitingBar1.StartWaiting();
+           
             
 
            // radWaitingBar1.StartWaiting();
@@ -986,8 +978,7 @@ namespace TelerikTest
             }
             catch
             {
-                radWaitingBar1.StopWaiting();
-                radWaitingBar1.Hide();
+               
                 RadMessageBox.Show("Проверьте правильность ввода имя пользователя и пароля");
                 return;
             }
@@ -1001,113 +992,68 @@ namespace TelerikTest
             //Console.WriteLine();
             //Console.WriteLine("Recent messages: {0}", inbox.Recent);
             radListView1.Items.Clear();
+
+            
             listBox2.Items.Clear();
-            for (int i = Math.Max(inbox.Count - 40,0); i < inbox.Count; i++)
+            for (int i = inbox.Count-1; i >= Math.Max(inbox.Count-40,0); i--)
             {
                 var message = inbox.GetMessage(i);
-                var space = "";
+                
                 if (message.Subject==null)
                 {
-                    Size len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name, radListView1.Font);
-                    if (len.Width < radListView1.Width / 3)
+                    if (message.Attachments.Count() > 0)
                     {
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name +space+ " | ");
+                        ListViewItem listViewItem = new ListViewItem(new string[]{"",message.From.OfType<MailboxAddress>().First().Name,
+                            " ", message.Date.ToString("dd.MM.yyyy")});
+                        listViewItem.ImageIndex = 0;
+
+                        radListView1.Items.Add(listViewItem);
+
+                        //radListView1.Items[radListView1.Items.Count - 1].ImageIndex = 3;
+                        //radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+
+
+                        //radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
+                        //    TextImageRelation.TextBeforeImage;
+
+                        //radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
+                        //radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
                     }
                     else
                     {
-                        len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name.Substring(0,13), radListView1.Font);
+                        ListViewItem listViewItem = new ListViewItem(new string[]{"",message.From.OfType<MailboxAddress>().First().Name,
+                            " ", message.Date.ToString("dd.MM.yyyy")});
                         
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name.Substring(0, 13) + space + " | ");
-                        
-                    }
-                   
-                   
-                }
-                else if (message.Subject.Length <= 20)
-                {
-                    Size len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name,
-                        radListView1.Font);
-                    if (len.Width < radListView1.Width / 3)
-                    {
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
 
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name + space + " | " +
-                                               message.Subject);
-                    }
-                    else
-                    {
-                        len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name.Substring(0, 13), radListView1.Font);
-
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name.Substring(0,13) + space + " | " +
-                                               message.Subject);
+                        radListView1.Items.Add(listViewItem);
                     }
 
                 }
+                
                 else
                 {
-
-                    Size len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name, radListView1.Font);
-                    if (len.Width < radListView1.Width / 3)
+                    if (message.Attachments.Count() > 0)
                     {
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
+                        ListViewItem listViewItem = new ListViewItem(new string[]{"",message.From.OfType<MailboxAddress>().First().Name,
+                            message.Subject, message.Date.ToString("dd.MM.yyyy")});
+                        listViewItem.ImageIndex = 0;
 
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name + space + " | " +
-                                               message.Subject.Substring(0, 20) + "...");
+                        radListView1.Items.Add(listViewItem);
+                        
                     }
                     else
                     {
-                        len = TextRenderer.MeasureText(message.From.OfType<MailboxAddress>().First().Name.Substring(0, 13), radListView1.Font);
-
-                        Size Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        while (Size1.Width + len.Width < radListView1.Width / 3)
-                        {
-                            space += " ";
-                            Size1 = TextRenderer.MeasureText(space, radListView1.Font);
-                        }
-
-                        radListView1.Items.Add(message.From.OfType<MailboxAddress>().First().Name.Substring(0,13) + space + " | " +
-                                               message.Subject.Substring(0, 20) + "...");
+                        ListViewItem listViewItem = new ListViewItem(
+                        new string[]{"",message.From.OfType<MailboxAddress>().First().Name.ToString(),
+                            message.Subject.ToString(), message.Date.ToString("dd.MM.yyyy")});
+                      
+                        radListView1.Items.Add(listViewItem);
                     }
+
                 }
               
 
-                if (message.Attachments.Count() > 0)
-                {
-                    radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
-
-                    radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
-                        TextImageRelation.TextBeforeImage;
-                    radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
-                    radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
-                }
+               
                 listBox2.Items.Add(i);
 
               
@@ -1115,9 +1061,9 @@ namespace TelerikTest
             }
 
               
-            radWaitingBar1.StopWaiting();
+           
             //radWaitingBar1.AssociatedControl = null;
-            radWaitingBar1.Hide();
+           
             radButton5.Visible = true;
             var s = File.ReadAllLines("SavedMail.txt");
             if (!s.Contains(loginbox.Text + " " + passbox.Text))
@@ -1140,8 +1086,7 @@ namespace TelerikTest
         private void OutcomeMessage_Click(object sender, EventArgs e)
         {
             // radWaitingBar1.AssociatedControl = radListView1;
-            radWaitingBar1.Show();
-            radWaitingBar1.StartWaiting();
+           
             var inbox = mailclient.GetFolder(SpecialFolder.Sent);
             inbox.Open(FolderAccess.ReadOnly);
 
@@ -1249,19 +1194,18 @@ namespace TelerikTest
 
                 if (message.Attachments.Count() > 0)
                 {
-                    radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                   // radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
 
-                    radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
-                        TextImageRelation.TextBeforeImage;
-                    radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
-                    radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
+                   // radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
+                        //TextImageRelation.TextBeforeImage;
+                   // radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
+                   // radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
                 }
                 listBox2.Items.Add(i);
                 //Console.WriteLine("Subject: {0}", );
             }
            // radWaitingBar1.AssociatedControl = null;
-            radWaitingBar1.StopWaiting();
-            radWaitingBar1.Hide();
+          
 
 
             //client.Disconnect(true);
@@ -1377,12 +1321,12 @@ namespace TelerikTest
 
                 if (message.Attachments.Count() > 0)
                 {
-                    radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
+                   // radListView1.Items[radListView1.Items.Count - 1].Image = new Bitmap("вложение.png");
 
-                    radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
-                        TextImageRelation.TextBeforeImage;
-                    radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
-                    radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
+                    //radListView1.Items[radListView1.Items.Count - 1].TextImageRelation =
+                        //TextImageRelation.TextBeforeImage;
+                    //radListView1.Items[radListView1.Items.Count - 1].ImageAlignment = ContentAlignment.MiddleRight;
+                    //radListView1.Items[radListView1.Items.Count - 1].TextAlignment = ContentAlignment.MiddleLeft;
                 }
                 listBox2.Items.Add(i);
                 //Console.WriteLine("Subject: {0}", );
@@ -1394,7 +1338,7 @@ namespace TelerikTest
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var r = new RadForm2(mailclient.Inbox, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndex]), ConnectedMail, mailclient, pass, 0);
+            var r = new RadForm2(mailclient.Inbox, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndices[0]]), ConnectedMail, mailclient, pass, 0);
             r.ShowDialog();
           
         }
@@ -1406,12 +1350,12 @@ namespace TelerikTest
             IMailFolder inbox;
             try
             {
-                 message = mailclient.Inbox.GetMessage(System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndex]));
+                 message = mailclient.Inbox.GetMessage(System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndices[0]]));
                  inbox = mailclient.Inbox;
             }
             catch (Exception exception)
             {
-                 message = mailclient.GetFolder(SpecialFolder.Sent).GetMessage(System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndex]));
+                 message = mailclient.GetFolder(SpecialFolder.Sent).GetMessage(System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndices[0]]));
                  inbox = mailclient.GetFolder(SpecialFolder.Sent);
             }
             
@@ -1429,7 +1373,7 @@ namespace TelerikTest
 
 
             s =s.Remove(s.Length-1);
-            var r = new RadForm2(inbox, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndex]), ConnectedMail, mailclient, pass, 0,s);
+            var r = new RadForm2(inbox, System.Convert.ToInt32(listBox2.Items[radListView1.SelectedIndices[0]]), ConnectedMail, mailclient, pass, 0,s);
             r.ShowDialog();
         }
 
@@ -1495,6 +1439,8 @@ namespace TelerikTest
            // foldersPanel.Items[0].Position = new Point(x-21, 2);
 
         }
+
+      
     }
 
     public class CustomRichTextEditorRibbonBar : RichTextEditorRibbonBar
