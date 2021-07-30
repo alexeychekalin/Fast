@@ -54,6 +54,8 @@
             // 
             // subject
             // 
+            this.subject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.subject.Location = new System.Drawing.Point(28, 98);
             this.subject.Multiline = true;
             this.subject.Name = "subject";
@@ -67,17 +69,22 @@
             // 
             // body
             // 
+            this.body.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.body.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(189)))), ((int)(((byte)(232)))));
             this.body.Location = new System.Drawing.Point(28, 171);
             this.body.Name = "body";
             this.body.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(78)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
             this.body.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.body.Size = new System.Drawing.Size(796, 392);
+            this.body.Size = new System.Drawing.Size(836, 392);
             this.body.TabIndex = 1;
             this.body.ThemeName = "Office2013Light";
             // 
             // sender
             // 
+            this.sender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sender.Location = new System.Drawing.Point(28, 22);
             this.sender.Multiline = true;
             this.sender.Name = "sender";
@@ -123,7 +130,8 @@
             // 
             // radLabel4
             // 
-            this.radLabel4.Location = new System.Drawing.Point(830, 151);
+            this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.radLabel4.Location = new System.Drawing.Point(870, 151);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(80, 19);
             this.radLabel4.TabIndex = 7;
@@ -132,6 +140,7 @@
             // 
             // radButton1
             // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radButton1.Location = new System.Drawing.Point(28, 569);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(110, 24);
@@ -143,10 +152,12 @@
             // listView1
             // 
             this.listView1.AllowDrop = true;
+            this.listView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(829, 171);
+            this.listView1.Location = new System.Drawing.Point(870, 171);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(121, 392);
+            this.listView1.Size = new System.Drawing.Size(80, 392);
             this.listView1.TabIndex = 9;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;

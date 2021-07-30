@@ -52,7 +52,7 @@ namespace TelerikTest
 
                 radMultiColumnComboBox1.DataSource = File.ReadAllLines("MyMail.txt").Select(x => new { StrValue = x }).ToList(); ;
                 radMultiColumnComboBox1.Columns[0].HeaderText = "Сохраненные Адресаты";
-                radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width;
+                radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width-25;
             }
 
 
@@ -81,7 +81,7 @@ namespace TelerikTest
 
                 radMultiColumnComboBox1.DataSource = File.ReadAllLines("MyMail.txt").Select(x => new { StrValue = x }).ToList(); ;
                 radMultiColumnComboBox1.Columns[0].HeaderText = "Сохраненные Адресаты";
-                radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width;
+                radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width-25;
             }
 
 
@@ -168,6 +168,21 @@ namespace TelerikTest
             this.sender.Text = radMultiColumnComboBox1.Text;
         }
 
-     
+        private void RadListView1_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+
+
+            foreach (var s in files)
+            {
+                radListView1.Items.Add(s.Substring(s.LastIndexOf("\\") + 1));
+                listBox1.Items.Add(s.Substring(0, s.LastIndexOf("\\")));
+            }
+        }
+
+        private void RadListView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.All;
+        }
     }
 }

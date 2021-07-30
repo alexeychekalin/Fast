@@ -349,40 +349,40 @@
             this.columnHeader4});
             this.radListView1.FullRowSelect = true;
             this.radListView1.HideSelection = false;
-            this.radListView1.Location = new System.Drawing.Point(31, 134);
+            this.radListView1.Location = new System.Drawing.Point(30, 130);
             this.radListView1.Name = "radListView1";
-            this.radListView1.Scrollable = false;
-            this.radListView1.Size = new System.Drawing.Size(346, 437);
+            this.radListView1.Size = new System.Drawing.Size(347, 437);
             this.radListView1.SmallImageList = this.imageList3;
             this.radListView1.TabIndex = 1;
             this.radListView1.UseCompatibleStateImageBehavior = false;
             this.radListView1.View = System.Windows.Forms.View.Details;
+            this.radListView1.ColumnWidthChanging += new System.Windows.Forms.ColumnWidthChangingEventHandler(this.RadListView1_ColumnWidthChanging);
             this.radListView1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.RadListView1_MouseDoubleClick);
             // 
             // columnHeader1
             // 
             this.columnHeader1.DisplayIndex = 3;
             this.columnHeader1.Text = "";
-            this.columnHeader1.Width = 82;
+            this.columnHeader1.Width = 14;
             // 
             // columnHeader2
             // 
             this.columnHeader2.DisplayIndex = 0;
             this.columnHeader2.Text = "Отправитель";
-            this.columnHeader2.Width = 153;
+            this.columnHeader2.Width = 110;
             // 
             // columnHeader3
             // 
             this.columnHeader3.DisplayIndex = 1;
             this.columnHeader3.Text = "Тема";
-            this.columnHeader3.Width = 89;
+            this.columnHeader3.Width = 138;
             // 
             // columnHeader4
             // 
             this.columnHeader4.DisplayIndex = 2;
             this.columnHeader4.Text = "Дата";
             this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 79;
+            this.columnHeader4.Width = 78;
             // 
             // imageList3
             // 
@@ -404,7 +404,7 @@
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button2.Location = new System.Drawing.Point(3, 275);
+            this.button2.Location = new System.Drawing.Point(3, 323);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(25, 25);
             this.button2.TabIndex = 25;
@@ -417,7 +417,7 @@
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(3, 241);
+            this.button1.Location = new System.Drawing.Point(3, 292);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(25, 25);
             this.button1.TabIndex = 24;
@@ -451,7 +451,7 @@
             this.outcomeMessage.BackColor = System.Drawing.Color.White;
             this.outcomeMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("outcomeMessage.BackgroundImage")));
             this.outcomeMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.outcomeMessage.Location = new System.Drawing.Point(3, 134);
+            this.outcomeMessage.Location = new System.Drawing.Point(3, 185);
             this.outcomeMessage.Name = "outcomeMessage";
             this.outcomeMessage.Size = new System.Drawing.Size(25, 25);
             this.outcomeMessage.TabIndex = 23;
@@ -464,7 +464,7 @@
             this.incomeMessage.BackColor = System.Drawing.Color.White;
             this.incomeMessage.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("incomeMessage.BackgroundImage")));
             this.incomeMessage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.incomeMessage.Location = new System.Drawing.Point(2, 108);
+            this.incomeMessage.Location = new System.Drawing.Point(2, 159);
             this.incomeMessage.Name = "incomeMessage";
             this.incomeMessage.Size = new System.Drawing.Size(25, 25);
             this.incomeMessage.TabIndex = 0;
@@ -486,11 +486,10 @@
             // 
             // radButton5
             // 
-            this.radButton5.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.radButton5.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
             this.radButton5.Image = ((System.Drawing.Image)(resources.GetObject("radButton5.Image")));
             this.radButton5.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton5.Location = new System.Drawing.Point(3, 210);
+            this.radButton5.Location = new System.Drawing.Point(3, 242);
             this.radButton5.Name = "radButton5";
             this.radButton5.Size = new System.Drawing.Size(25, 25);
             this.radButton5.TabIndex = 19;
@@ -512,6 +511,7 @@
             // loginbox
             // 
             this.loginbox.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.loginbox.Cursor = System.Windows.Forms.Cursors.Default;
             // 
             // loginbox.NestedRadGridView
             // 
@@ -535,7 +535,8 @@
             this.loginbox.EditorControl.TabIndex = 0;
             this.loginbox.Location = new System.Drawing.Point(8, 14);
             this.loginbox.Name = "loginbox";
-            this.loginbox.Size = new System.Drawing.Size(365, 21);
+            this.loginbox.ScrollOnMouseWheel = false;
+            this.loginbox.Size = new System.Drawing.Size(369, 21);
             this.loginbox.TabIndex = 12;
             this.loginbox.TabStop = false;
             this.loginbox.ThemeName = "Office2013Light";
@@ -543,11 +544,10 @@
             // 
             // radButton7
             // 
-            this.radButton7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radButton7.DisplayStyle = Telerik.WinControls.DisplayStyle.Image;
             this.radButton7.Image = ((System.Drawing.Image)(resources.GetObject("radButton7.Image")));
             this.radButton7.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton7.Location = new System.Drawing.Point(3, 306);
+            this.radButton7.Location = new System.Drawing.Point(3, 357);
             this.radButton7.Name = "radButton7";
             this.radButton7.Size = new System.Drawing.Size(25, 25);
             this.radButton7.TabIndex = 17;
@@ -597,7 +597,7 @@
             this.radButton4.EnableAnalytics = false;
             this.radButton4.Image = ((System.Drawing.Image)(resources.GetObject("radButton4.Image")));
             this.radButton4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton4.Location = new System.Drawing.Point(3, 160);
+            this.radButton4.Location = new System.Drawing.Point(3, 211);
             this.radButton4.Name = "radButton4";
             this.radButton4.Size = new System.Drawing.Size(25, 25);
             this.radButton4.TabIndex = 16;

@@ -58,6 +58,7 @@
             // 
             // radButton1
             // 
+            this.radButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.radButton1.Location = new System.Drawing.Point(47, 590);
             this.radButton1.Name = "radButton1";
             this.radButton1.Size = new System.Drawing.Size(110, 24);
@@ -68,6 +69,7 @@
             // 
             // radLabel4
             // 
+            this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.radLabel4.Location = new System.Drawing.Point(849, 172);
             this.radLabel4.Name = "radLabel4";
             this.radLabel4.Size = new System.Drawing.Size(80, 19);
@@ -104,6 +106,8 @@
             // 
             // sender
             // 
+            this.sender.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sender.Location = new System.Drawing.Point(47, 40);
             this.sender.Multiline = true;
             this.sender.Name = "sender";
@@ -112,15 +116,23 @@
             // 
             // radListView1
             // 
+            this.radListView1.AllowDrop = true;
+            this.radListView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.radListView1.Location = new System.Drawing.Point(849, 192);
             this.radListView1.Name = "radListView1";
             this.radListView1.Size = new System.Drawing.Size(120, 392);
             this.radListView1.TabIndex = 11;
             this.radListView1.ThemeName = "Office2013Light";
+            this.radListView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragDrop);
+            this.radListView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragEnter);
             // 
             // body
             // 
             this.body.AllowDrop = true;
+            this.body.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.body.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(189)))), ((int)(((byte)(232)))));
             this.body.Location = new System.Drawing.Point(47, 192);
             this.body.Name = "body";
@@ -134,6 +146,8 @@
             // 
             // subject
             // 
+            this.subject.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.subject.Location = new System.Drawing.Point(47, 119);
             this.subject.Multiline = true;
             this.subject.Name = "subject";
@@ -147,6 +161,7 @@
             // 
             // listBox1
             // 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(849, 590);
             this.listBox1.Name = "listBox1";
@@ -156,6 +171,8 @@
             // 
             // radMultiColumnComboBox1
             // 
+            this.radMultiColumnComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             // 
             // radMultiColumnComboBox1.NestedRadGridView
             // 
