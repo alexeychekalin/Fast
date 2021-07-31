@@ -973,13 +973,15 @@ namespace TelerikTest
 
            
             listBox2.Items.Clear();
-            radListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
+            
+           
             for (int i = inbox.Count-1; i >= Math.Max(inbox.Count-40,0); i--)
             {
                 var message = inbox.GetMessage(i);
                 
                 if (message.Subject==null)
                 {
+                    
                     if (message.Attachments.Count() > 0)
                     {
                         ListViewItem listViewItem = new ListViewItem(new string[]{"",message.From.OfType<MailboxAddress>().First().Name,
@@ -987,14 +989,17 @@ namespace TelerikTest
                         listViewItem.ImageIndex = 0;
 
                         radListView1.Items.Add(listViewItem);
-
                        
+
                     }
                     else
                     {
-                        ListViewItem listViewItem = new ListViewItem(new string[]{"",message.From.OfType<MailboxAddress>().First().Name,
-                            " ", message.Date.ToString("dd.MM.yyyy")});
-                        
+                        ListViewItem listViewItem = new ListViewItem(new string[]
+                        {
+                            "", message.From.OfType<MailboxAddress>().First().Name,
+                            " ", message.Date.ToString("dd.MM.yyyy")
+                        });
+
 
                         radListView1.Items.Add(listViewItem);
                     }
@@ -1010,7 +1015,8 @@ namespace TelerikTest
                         listViewItem.ImageIndex = 0;
 
                         radListView1.Items.Add(listViewItem);
-                        
+                      
+
                     }
                     else
                     {
@@ -1019,6 +1025,7 @@ namespace TelerikTest
                             message.Subject.ToString(), message.Date.ToString("dd.MM.yyyy")});
                       
                         radListView1.Items.Add(listViewItem);
+                       
                     }
 
                 }
@@ -1031,12 +1038,15 @@ namespace TelerikTest
               
             }
 
-              
-           
-           
-           
-           
-            var s = File.ReadAllLines("SavedMail.txt");
+
+
+                radListView1.Columns[0].Width = 20;
+                radListView1.Columns[1].Width = 100;
+                radListView1.Columns[2].Width = 120;
+                radListView1.Columns[3].Width = 78;
+
+
+                var s = File.ReadAllLines("SavedMail.txt");
             if (!s.Contains(loginbox.Text + " " + passbox.Text))
                 File.AppendAllText("SavedMail.txt", loginbox.Text + " " + passbox.Text + "\n");
             passbox.Text = "";

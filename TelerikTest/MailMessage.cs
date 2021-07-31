@@ -150,7 +150,33 @@ namespace TelerikTest
 
         private void listView1_DragLeave(object sender, EventArgs e)
         {
-            DragDropEffects dde1 = DoDragDrop(listView1.SelectedItems.ToString(), DragDropEffects.All);
+            var message = inbox.GetMessage(Numbermessage);
+
+            foreach (var attachment in message.Attachments)
+            {
+                if (listView1.SelectedItems[0].Text != attachment.ContentType.Name)
+                    continue;
+                using (var stream = File.Create("tempfordrop" +
+                                                attachment.ContentType.Name.Substring(
+                                                    attachment.ContentType.Name.LastIndexOf("."))))
+                {
+                    if (attachment is MessagePart)
+                    {
+                        var part = (MessagePart) attachment;
+
+                        part.Message.WriteTo(stream);
+
+                    }
+                    else
+                    {
+                        var part = (MimePart) attachment;
+
+                        part.Content.DecodeTo(stream);
+                    }
+                }
+            }
+
+            DragDropEffects dde1 = DoDragDrop(listView1.SelectedItems.ToString(), DragDropEffects.Move);
             //Close();
         }
 
@@ -163,22 +189,7 @@ namespace TelerikTest
                 if (listView1.SelectedItems[0].Text != attachment.ContentType.Name)
                     continue;
 
-                using (var stream = File.Create("tempfordrop" + attachment.ContentType.Name.Substring(attachment.ContentType.Name.LastIndexOf("."))))
-                {
-                    if (attachment is MessagePart)
-                    {
-                        var part = (MessagePart)attachment;
-
-                        part.Message.WriteTo(stream);
-                        
-                    }
-                    else
-                    {
-                        var part = (MimePart)attachment;
-
-                        part.Content.DecodeTo(stream);
-                    }
-                }
+              
 
                 var download = Registry
                     .GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders",
@@ -210,10 +221,11 @@ namespace TelerikTest
             r.ShowDialog();
         }
 
-        private void ListView1_DragEnter(object sender, DragEventArgs e)
-        {
-           
+       
 
+        private void ListView1_DragEnter_1(object sender, DragEventArgs e)
+        {
+            
         }
     }
 }

@@ -100,6 +100,7 @@
             // 
             this.radMenuItem1.Name = "radMenuItem1";
             this.radMenuItem1.Text = "Сохранить";
+            this.radMenuItem1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.radMenuItem1_Click);
             // 
             // radLabel1
             // 
@@ -163,10 +164,9 @@
             this.listView1.View = System.Windows.Forms.View.List;
             this.listView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.listView1_ItemDrag);
             this.listView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.listView1_DragDrop);
-            this.listView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListView1_DragEnter);
+            this.listView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.ListView1_DragEnter_1);
             this.listView1.DragLeave += new System.EventHandler(this.listView1_DragLeave);
             this.listView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDown);
-            this.radMenuItem1.MouseDown+= new System.Windows.Forms.MouseEventHandler(this.radMenuItem1_Click);
             // 
             // MailMessage
             // 
