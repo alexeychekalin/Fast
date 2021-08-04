@@ -341,6 +341,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="launcher_Icon1.ico" />
+    <None Include="Resources\trash_files.jpg" />
+    <Content Include="roket_2715x1697.ico" />
+    <Content Include="run_3132.ico" />
     <None Include="Resources\mail_replayall_2860.bmp" />
     <None Include="Resources\mail_replay_7242.bmp" />
     <None Include="Resources\trash_9377.bmp" />

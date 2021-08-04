@@ -21,7 +21,7 @@ namespace TelerikTest
 
 
             // LICENSE CHECK
-            /*
+            
              var id = ComputerInfo.GetComputerId();
             KeyManager km = new KeyManager(id);
             LicenseInfo lic = new LicenseInfo();
@@ -43,11 +43,11 @@ namespace TelerikTest
                 Application.Run(mainForm);
                 //Application.Run(new Registration());
             }
-            */
+            
             //END LICENSE CHECK
-            RadForm1 mainForm = new RadForm1(); //this takes ages
-            SplashForm.CloseForm();
-            Application.Run(mainForm);
+            // RadForm1 mainForm = new RadForm1(); //this takes ages
+            //SplashForm.CloseForm();
+            //Application.Run(mainForm);
         }
     }
 }

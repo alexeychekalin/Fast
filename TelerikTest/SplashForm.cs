@@ -17,8 +17,9 @@ namespace TelerikTest
         public SplashForm()
         {
             InitializeComponent();
-           // this.BackColor = Color.Black;
-           // this.TransparencyKey = Color.Black;
+            this.AllowTransparency = true;
+            this.BackColor = Color.AliceBlue;//цвет фона  
+            this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
         }
 
         //Delegate for cross thread call to close

@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition3 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RadForm1));
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition4 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.radSplitContainer2 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel3 = new Telerik.WinControls.UI.SplitPanel();
@@ -45,6 +45,7 @@
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.chatname = new Telerik.WinControls.UI.RadTextBox();
             this.splitPanel4 = new Telerik.WinControls.UI.SplitPanel();
+            this.disconnectbutton = new Telerik.WinControls.UI.RadButton();
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.radButton9 = new Telerik.WinControls.UI.RadButton();
             this.radListView1 = new System.Windows.Forms.ListView();
@@ -54,7 +55,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.imageList3 = new System.Windows.Forms.ImageList(this.components);
             this.radButton10 = new Telerik.WinControls.UI.RadButton();
-            this.disconnectbutton = new Telerik.WinControls.UI.RadButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.outcomeMessage = new System.Windows.Forms.Button();
@@ -70,6 +70,8 @@
             this.radSplitContainer3 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel1 = new Telerik.WinControls.UI.SplitPanel();
             this.radPageView1 = new Telerik.WinControls.UI.RadPageView();
+            this.radPageViewPage1 = new Telerik.WinControls.UI.RadPageViewPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.splitPanel2 = new Telerik.WinControls.UI.SplitPanel();
             this.radSplitContainer1 = new Telerik.WinControls.UI.RadSplitContainer();
             this.splitPanel5 = new Telerik.WinControls.UI.SplitPanel();
@@ -90,6 +92,8 @@
             this.windows8Theme1 = new Telerik.WinControls.Themes.Windows8Theme();
             this.office2013DarkTheme1 = new Telerik.WinControls.Themes.Office2013DarkTheme();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
+            this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer2)).BeginInit();
             this.radSplitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel3)).BeginInit();
@@ -106,11 +110,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.chatname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel4)).BeginInit();
             this.splitPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.disconnectbutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             this.radButton3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radButton9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.disconnectbutton)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passbox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginbox)).BeginInit();
@@ -125,6 +129,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).BeginInit();
             this.splitPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).BeginInit();
+            this.radPageView1.SuspendLayout();
+            this.radPageViewPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).BeginInit();
             this.splitPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).BeginInit();
@@ -148,7 +154,7 @@
             // 
             this.splitter1.Location = new System.Drawing.Point(0, 0);
             this.splitter1.Name = "splitter1";
-            this.splitter1.Size = new System.Drawing.Size(3, 966);
+            this.splitter1.Size = new System.Drawing.Size(3, 999);
             this.splitter1.TabIndex = 2;
             this.splitter1.TabStop = false;
             // 
@@ -164,9 +170,11 @@
             // 
             // 
             this.radSplitContainer2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer2.Size = new System.Drawing.Size(380, 966);
+            this.radSplitContainer2.Size = new System.Drawing.Size(380, 999);
+            this.radSplitContainer2.SplitterWidth = 3;
             this.radSplitContainer2.TabIndex = 3;
             this.radSplitContainer2.TabStop = false;
+            this.radSplitContainer2.ThemeName = "Office2013Dark";
             // 
             // splitPanel3
             // 
@@ -185,12 +193,13 @@
             // 
             // 
             this.splitPanel3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel3.Size = new System.Drawing.Size(380, 383);
+            this.splitPanel3.Size = new System.Drawing.Size(380, 397);
             this.splitPanel3.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.1015038F);
             this.splitPanel3.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -120);
             this.splitPanel3.TabIndex = 0;
             this.splitPanel3.TabStop = false;
             this.splitPanel3.Text = "splitPanel3";
+            this.splitPanel3.ThemeName = "Office2013Dark";
             // 
             // radButton1
             // 
@@ -233,7 +242,7 @@
             this.keybox.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.keybox.EditorControl.MasterTemplate.EnableGrouping = false;
             this.keybox.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.keybox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition3;
+            this.keybox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition1;
             this.keybox.EditorControl.Name = "NestedRadGridView";
             this.keybox.EditorControl.ReadOnly = true;
             this.keybox.EditorControl.ShowGroupPanel = false;
@@ -326,18 +335,31 @@
             this.splitPanel4.Controls.Add(this.findbox);
             this.splitPanel4.Controls.Add(this.listBox2);
             this.splitPanel4.Controls.Add(this.radButton4);
-            this.splitPanel4.Location = new System.Drawing.Point(0, 387);
+            this.splitPanel4.Location = new System.Drawing.Point(0, 400);
             this.splitPanel4.Name = "splitPanel4";
             // 
             // 
             // 
             this.splitPanel4.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel4.Size = new System.Drawing.Size(380, 579);
+            this.splitPanel4.Size = new System.Drawing.Size(380, 599);
             this.splitPanel4.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.1015038F);
             this.splitPanel4.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 120);
             this.splitPanel4.TabIndex = 1;
             this.splitPanel4.TabStop = false;
             this.splitPanel4.Text = "splitPanel4";
+            this.splitPanel4.ThemeName = "Office2013Dark";
+            // 
+            // disconnectbutton
+            // 
+            this.disconnectbutton.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.disconnectbutton.Location = new System.Drawing.Point(239, 40);
+            this.disconnectbutton.Name = "disconnectbutton";
+            this.disconnectbutton.Size = new System.Drawing.Size(135, 24);
+            this.disconnectbutton.TabIndex = 15;
+            this.disconnectbutton.Text = "Разъединить";
+            this.disconnectbutton.ThemeName = "Office2013Light";
+            this.disconnectbutton.Visible = false;
+            this.disconnectbutton.Click += new System.EventHandler(this.Disconnectbutton_Click);
             // 
             // radButton3
             // 
@@ -423,18 +445,6 @@
             this.radButton10.Size = new System.Drawing.Size(25, 21);
             this.radButton10.TabIndex = 26;
             this.radButton10.Click += new System.EventHandler(this.RadButton10_Click);
-            // 
-            // disconnectbutton
-            // 
-            this.disconnectbutton.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.disconnectbutton.Location = new System.Drawing.Point(239, 40);
-            this.disconnectbutton.Name = "disconnectbutton";
-            this.disconnectbutton.Size = new System.Drawing.Size(135, 24);
-            this.disconnectbutton.TabIndex = 15;
-            this.disconnectbutton.Text = "Разъединить";
-            this.disconnectbutton.ThemeName = "Office2013Light";
-            this.disconnectbutton.Visible = false;
-            this.disconnectbutton.Click += new System.EventHandler(this.Disconnectbutton_Click);
             // 
             // button2
             // 
@@ -531,7 +541,7 @@
             this.loginbox.EditorControl.MasterTemplate.AllowColumnChooser = false;
             this.loginbox.EditorControl.MasterTemplate.EnableGrouping = false;
             this.loginbox.EditorControl.MasterTemplate.ShowFilteringRow = false;
-            this.loginbox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition4;
+            this.loginbox.EditorControl.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.loginbox.EditorControl.Name = "NestedRadGridView";
             this.loginbox.EditorControl.ReadOnly = true;
             this.loginbox.EditorControl.ShowGroupPanel = false;
@@ -587,7 +597,7 @@
             // 
             this.listBox2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(9, 537);
+            this.listBox2.Location = new System.Drawing.Point(9, 538);
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(24, 30);
             this.listBox2.TabIndex = 18;
@@ -620,9 +630,11 @@
             // 
             // 
             this.radSplitContainer3.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer3.Size = new System.Drawing.Size(664, 966);
+            this.radSplitContainer3.Size = new System.Drawing.Size(672, 999);
+            this.radSplitContainer3.SplitterWidth = 3;
             this.radSplitContainer3.TabIndex = 4;
             this.radSplitContainer3.TabStop = false;
+            this.radSplitContainer3.ThemeName = "Office2013Dark";
             // 
             // splitPanel1
             // 
@@ -633,23 +645,26 @@
             // 
             // 
             this.splitPanel1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel1.Size = new System.Drawing.Size(414, 966);
-            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.1272727F, 0F);
-            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(81, 0);
+            this.splitPanel1.Size = new System.Drawing.Size(438, 999);
+            this.splitPanel1.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0.1547085F, 0F);
+            this.splitPanel1.SizeInfo.SplitterCorrection = new System.Drawing.Size(99, 0);
             this.splitPanel1.TabIndex = 0;
             this.splitPanel1.TabStop = false;
             this.splitPanel1.Text = "splitPanel1";
+            this.splitPanel1.ThemeName = "Office2013Dark";
             // 
             // radPageView1
             // 
             this.radPageView1.AllowDrop = true;
+            this.radPageView1.Controls.Add(this.radPageViewPage1);
             this.radPageView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPageView1.ItemSizeMode = Telerik.WinControls.UI.PageViewItemSizeMode.Individual;
             this.radPageView1.Location = new System.Drawing.Point(0, 0);
             this.radPageView1.Name = "radPageView1";
-            this.radPageView1.Size = new System.Drawing.Size(414, 966);
+            this.radPageView1.SelectedPage = this.radPageViewPage1;
+            this.radPageView1.Size = new System.Drawing.Size(438, 999);
             this.radPageView1.TabIndex = 0;
-            this.radPageView1.ThemeName = "Windows8";
+            this.radPageView1.ThemeName = "Office2013Light";
             this.radPageView1.PageRemoving += new System.EventHandler<Telerik.WinControls.UI.RadPageViewCancelEventArgs>(this.radPageView1_PageRemoving);
             this.radPageView1.PageRemoved += new System.EventHandler<Telerik.WinControls.UI.RadPageViewEventArgs>(this.radPageView1_PageRemoved);
             this.radPageView1.SelectedPageChanged += new System.EventHandler(this.RadPageView1_SelectedPageChanged);
@@ -662,21 +677,41 @@
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemSpacing = 10;
             ((Telerik.WinControls.UI.RadPageViewStripElement)(this.radPageView1.GetChildAt(0))).ItemSizeMode = Telerik.WinControls.UI.PageViewItemSizeMode.Individual;
             // 
+            // radPageViewPage1
+            // 
+            this.radPageViewPage1.Controls.Add(this.label1);
+            this.radPageViewPage1.ItemSize = new System.Drawing.SizeF(73F, 27F);
+            this.radPageViewPage1.Location = new System.Drawing.Point(5, 31);
+            this.radPageViewPage1.Name = "radPageViewPage1";
+            this.radPageViewPage1.Size = new System.Drawing.Size(428, 963);
+            this.radPageViewPage1.Text = "Начало";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(262, 338);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(402, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Для просмотра и редактирования файлов перетащите их на эту панель";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // splitPanel2
             // 
             this.splitPanel2.Controls.Add(this.radSplitContainer1);
-            this.splitPanel2.Location = new System.Drawing.Point(418, 0);
+            this.splitPanel2.Location = new System.Drawing.Point(441, 0);
             this.splitPanel2.Name = "splitPanel2";
             // 
             // 
             // 
             this.splitPanel2.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel2.Size = new System.Drawing.Size(246, 966);
-            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.1272727F, 0F);
-            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(-81, 0);
+            this.splitPanel2.Size = new System.Drawing.Size(231, 999);
+            this.splitPanel2.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(-0.1547085F, 0F);
+            this.splitPanel2.SizeInfo.SplitterCorrection = new System.Drawing.Size(-99, 0);
             this.splitPanel2.TabIndex = 1;
             this.splitPanel2.TabStop = false;
             this.splitPanel2.Text = "splitPanel2";
+            this.splitPanel2.ThemeName = "Office2013Dark";
             // 
             // radSplitContainer1
             // 
@@ -686,16 +721,17 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.radSplitContainer1.Controls.Add(this.splitPanel5);
             this.radSplitContainer1.Controls.Add(this.splitPanel6);
-            this.radSplitContainer1.Location = new System.Drawing.Point(-5, 0);
+            this.radSplitContainer1.Location = new System.Drawing.Point(-5, -7);
             this.radSplitContainer1.Name = "radSplitContainer1";
             this.radSplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // 
             // 
             this.radSplitContainer1.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.radSplitContainer1.Size = new System.Drawing.Size(251, 966);
+            this.radSplitContainer1.Size = new System.Drawing.Size(233, 1006);
             this.radSplitContainer1.TabIndex = 0;
             this.radSplitContainer1.TabStop = false;
+            this.radSplitContainer1.ThemeName = "Office2013Dark";
             // 
             // splitPanel5
             // 
@@ -708,12 +744,13 @@
             // 
             // 
             this.splitPanel5.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel5.Size = new System.Drawing.Size(251, 475);
-            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.005907626F);
-            this.splitPanel5.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -28);
+            this.splitPanel5.Size = new System.Drawing.Size(233, 415);
+            this.splitPanel5.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, -0.08582834F);
+            this.splitPanel5.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, -108);
             this.splitPanel5.TabIndex = 0;
             this.splitPanel5.TabStop = false;
             this.splitPanel5.Text = "splitPanel5";
+            this.splitPanel5.ThemeName = "Office2013Dark";
             // 
             // radWaitingBar2
             // 
@@ -737,12 +774,12 @@
             this.filesPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.filesPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.filesPanel.HideSelection = false;
             this.filesPanel.LargeImageList = this.imageList2;
-            this.filesPanel.Location = new System.Drawing.Point(7, 0);
-            this.filesPanel.MultiSelect = false;
+            this.filesPanel.Location = new System.Drawing.Point(4, -1);
             this.filesPanel.Name = "filesPanel";
-            this.filesPanel.Size = new System.Drawing.Size(244, 484);
+            this.filesPanel.Size = new System.Drawing.Size(233, 581);
             this.filesPanel.TabIndex = 0;
             this.filesPanel.UseCompatibleStateImageBehavior = false;
             this.filesPanel.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.filesPanel_ItemDrag);
@@ -774,16 +811,17 @@
             this.foldersPanel.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.foldersPanel.HideSelection = false;
             this.foldersPanel.LargeImageList = this.imageList1;
-            this.foldersPanel.Location = new System.Drawing.Point(8, 72);
-            this.foldersPanel.MultiSelect = false;
+            this.foldersPanel.Location = new System.Drawing.Point(4, 72);
             this.foldersPanel.Name = "foldersPanel";
-            this.foldersPanel.Size = new System.Drawing.Size(243, 401);
+            this.foldersPanel.Size = new System.Drawing.Size(229, 341);
             this.foldersPanel.TabIndex = 6;
             this.foldersPanel.UseCompatibleStateImageBehavior = false;
             this.foldersPanel.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.foldersPanel_ItemDrag);
             this.foldersPanel.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.foldersPanel_ItemSelectionChanged);
             this.foldersPanel.DragDrop += new System.Windows.Forms.DragEventHandler(this.foldersPanel_DragDrop);
             this.foldersPanel.DragEnter += new System.Windows.Forms.DragEventHandler(this.foldersPanel_DragEnter);
+            this.foldersPanel.DragOver += new System.Windows.Forms.DragEventHandler(this.foldersPanel_DragOver);
+            this.foldersPanel.GiveFeedback += new System.Windows.Forms.GiveFeedbackEventHandler(this.foldersPanel_GiveFeedback);
             this.foldersPanel.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.foldersPanel_MouseDoubleClick);
             this.foldersPanel.Resize += new System.EventHandler(this.foldersPanel_Resize);
             // 
@@ -803,12 +841,13 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel1.Location = new System.Drawing.Point(0, 0);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(251, 72);
+            this.radPanel1.Size = new System.Drawing.Size(233, 74);
             this.radPanel1.TabIndex = 5;
+            this.radPanel1.ThemeName = "VisualStudio2012Light";
             // 
             // radButton11
             // 
-            this.radButton11.Location = new System.Drawing.Point(9, 3);
+            this.radButton11.Location = new System.Drawing.Point(9, 7);
             this.radButton11.Name = "radButton11";
             this.radButton11.Size = new System.Drawing.Size(108, 24);
             this.radButton11.TabIndex = 9;
@@ -818,7 +857,7 @@
             // 
             // pathToFileFolder
             // 
-            this.pathToFileFolder.Location = new System.Drawing.Point(37, 48);
+            this.pathToFileFolder.Location = new System.Drawing.Point(37, 52);
             this.pathToFileFolder.Name = "pathToFileFolder";
             this.pathToFileFolder.Size = new System.Drawing.Size(14, 18);
             this.pathToFileFolder.TabIndex = 8;
@@ -826,7 +865,7 @@
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(4, 48);
+            this.radLabel2.Location = new System.Drawing.Point(4, 52);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(33, 18);
             this.radLabel2.TabIndex = 7;
@@ -834,7 +873,7 @@
             // 
             // nameFileFolder
             // 
-            this.nameFileFolder.Location = new System.Drawing.Point(103, 30);
+            this.nameFileFolder.Location = new System.Drawing.Point(103, 34);
             this.nameFileFolder.Name = "nameFileFolder";
             this.nameFileFolder.Size = new System.Drawing.Size(14, 18);
             this.nameFileFolder.TabIndex = 6;
@@ -842,7 +881,7 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(3, 30);
+            this.radLabel1.Location = new System.Drawing.Point(3, 34);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(101, 18);
             this.radLabel1.TabIndex = 5;
@@ -851,24 +890,25 @@
             // splitPanel6
             // 
             this.splitPanel6.Controls.Add(this.filesPanel);
-            this.splitPanel6.Location = new System.Drawing.Point(0, 479);
+            this.splitPanel6.Location = new System.Drawing.Point(0, 419);
             this.splitPanel6.Name = "splitPanel6";
             // 
             // 
             // 
             this.splitPanel6.RootElement.MinSize = new System.Drawing.Size(25, 25);
-            this.splitPanel6.Size = new System.Drawing.Size(251, 487);
-            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.005907626F);
-            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 28);
+            this.splitPanel6.Size = new System.Drawing.Size(233, 587);
+            this.splitPanel6.SizeInfo.AutoSizeScale = new System.Drawing.SizeF(0F, 0.08582834F);
+            this.splitPanel6.SizeInfo.SplitterCorrection = new System.Drawing.Size(0, 108);
             this.splitPanel6.TabIndex = 1;
             this.splitPanel6.TabStop = false;
             this.splitPanel6.Text = "splitPanel6";
+            this.splitPanel6.ThemeName = "Office2013Dark";
             // 
             // RadForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1047, 966);
+            this.ClientSize = new System.Drawing.Size(1055, 999);
             this.Controls.Add(this.radSplitContainer3);
             this.Controls.Add(this.radSplitContainer2);
             this.Controls.Add(this.splitter1);
@@ -880,7 +920,7 @@
             // 
             this.RootElement.ApplyShapeToControl = true;
             this.Text = "Fast Office";
-            this.ThemeName = "Office2013Dark";
+            this.ThemeName = "VisualStudio2012Light";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RadForm1_FormClosing);
             this.Load += new System.EventHandler(this.RadForm1_Load);
@@ -902,11 +942,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel4)).EndInit();
             this.splitPanel4.ResumeLayout(false);
             this.splitPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.disconnectbutton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
             this.radButton3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radButton9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.disconnectbutton)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passbox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginbox.EditorControl.MasterTemplate)).EndInit();
@@ -921,6 +961,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel1)).EndInit();
             this.splitPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPageView1)).EndInit();
+            this.radPageView1.ResumeLayout(false);
+            this.radPageViewPage1.ResumeLayout(false);
+            this.radPageViewPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitPanel2)).EndInit();
             this.splitPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radSplitContainer1)).EndInit();
@@ -976,6 +1019,20 @@
         private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.UI.RadButton radButton3;
         private Telerik.WinControls.UI.RadButton radButton9;
+        private System.Windows.Forms.Button outcomeMessage;
+        private System.Windows.Forms.Button incomeMessage;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private Telerik.WinControls.UI.RadButton radButton10;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ImageList imageList3;
+        private System.Windows.Forms.ListView radListView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private Telerik.WinControls.Themes.VisualStudio2012DarkTheme visualStudio2012DarkTheme1;
+        private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
         private Telerik.WinControls.UI.SplitPanel splitPanel2;
         private Telerik.WinControls.UI.RadSplitContainer radSplitContainer1;
         private Telerik.WinControls.UI.SplitPanel splitPanel5;
@@ -984,23 +1041,13 @@
         private Telerik.WinControls.UI.LineRingWaitingBarIndicatorElement lineRingWaitingBarIndicatorElement1;
         private System.Windows.Forms.ListView foldersPanel;
         private Telerik.WinControls.UI.RadPanel radPanel1;
+        private Telerik.WinControls.UI.RadButton radButton11;
         private Telerik.WinControls.UI.RadLabel pathToFileFolder;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel nameFileFolder;
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.SplitPanel splitPanel6;
-        private System.Windows.Forms.Button outcomeMessage;
-        private System.Windows.Forms.Button incomeMessage;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private Telerik.WinControls.UI.RadButton radButton10;
-        private Telerik.WinControls.UI.RadButton radButton11;
-        private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.ImageList imageList3;
-        private System.Windows.Forms.ListView radListView1;
-        private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private Telerik.WinControls.UI.RadPageViewPage radPageViewPage1;
+        private System.Windows.Forms.Label label1;
     }
 }
