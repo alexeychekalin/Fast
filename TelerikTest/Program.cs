@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using FoxLearn.License;
+using Timer = System.Threading.Timer;
 
 namespace TelerikTest
 {
@@ -16,19 +18,30 @@ namespace TelerikTest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            SplashForm.ShowSplashScreen();
+           // SplashForm.ShowSplashScreen();
+           var splash = new SplashForm();
+           //splash.StartPosition = FormStartPosition.CenterScreen;
+           splash.Show();
+           Thread.Sleep(1000);
+           splash.Close();
+           splash.Dispose();
 
 
+           RadForm1 mainForm = new RadForm1(); //this takes ages
+           //Thread.Sleep(3000);
+           //SplashForm.CloseForm();
+           Application.Run(mainForm);
 
             // LICENSE CHECK
-            
-             var id = ComputerInfo.GetComputerId();
+
+            var id = ComputerInfo.GetComputerId();
             KeyManager km = new KeyManager(id);
             LicenseInfo lic = new LicenseInfo();
             //Get license information from license file
             int value = km.LoadSuretyFile(string.Format(@"{0}\Key.lic", Application.StartupPath), ref lic);
             string productKey = lic.ProductKey;
             //Check valid
+            /*
             if (km.ValidKey(ref productKey))
             {
                 RadForm1 mainForm = new RadForm1(); //this takes ages
@@ -43,9 +56,10 @@ namespace TelerikTest
                 Application.Run(mainForm);
                 //Application.Run(new Registration());
             }
-            
+            */
             //END LICENSE CHECK
-            // RadForm1 mainForm = new RadForm1(); //this takes ages
+            //RadForm1 mainForm = new RadForm1(); //this takes ages
+            //Thread.Sleep(3000);
             //SplashForm.CloseForm();
             //Application.Run(mainForm);
         }

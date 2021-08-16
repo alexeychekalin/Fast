@@ -123,6 +123,26 @@ namespace TelerikTest.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap LoadingNotice {
+            get {
+                object obj = ResourceManager.GetObject("LoadingNotice", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LoadingNoticeOrig {
+            get {
+                object obj = ResourceManager.GetObject("LoadingNoticeOrig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mail_outbox_1642 {
             get {
                 object obj = ResourceManager.GetObject("mail-outbox_1642", resourceCulture);

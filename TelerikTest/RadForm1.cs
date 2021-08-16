@@ -29,6 +29,7 @@ using Telerik.WinControls;
 using Telerik.WinControls.Enumerations;
 using static b2xtranslator.OpenXmlLib.OpenXmlPackage;
 using Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.Xlsx;
+using Telerik.WinForms.Documents.FormatProviders.Rtf;
 using Telerik.WinForms.Documents.FormatProviders.Txt;
 using Telerik.WinForms.Documents.RichTextBoxCommands;
 using Telerik.WinForms.RichTextEditor;
@@ -176,6 +177,17 @@ namespace TelerikTest
                     File.AppendAllText(@"foldersPanel.txt", files[0] + System.Environment.NewLine);
                 }
             }
+            else
+            {
+                var pos = foldersPanel.PointToClient(new Point(e.X, e.Y));
+                var hit = foldersPanel.HitTest(pos);
+                var dragItem = (ListViewItem) e.Data.GetData(typeof(ListViewItem));
+                if (dragItem.ListView.Name == "listView1")
+                {
+                    File.Copy("tempfordrop" + dragItem.Text.Substring(dragItem.Text.LastIndexOf(".")),
+                        _foldersList[hit.Item.Index] + @"\" + dragItem.Text, true);
+                }
+            }
         }
         private void foldersPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -189,14 +201,13 @@ namespace TelerikTest
             }
             else
             {
-                e.Effect = DragDropEffects.None;
+                e.Effect = DragDropEffects.Move;
             }
         }
         private void foldersPanel_ItemDrag(object sender, ItemDragEventArgs e)
         {
             DoDragDrop(e.Item, DragDropEffects.All);
         }
-
         private void foldersPanel_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             if (Directory.Exists(_foldersList[foldersPanel.SelectedItems[0].Index]))
@@ -252,24 +263,24 @@ namespace TelerikTest
                         case ".doc":
                             StructuredStorageReader reader = new StructuredStorageReader(file[0]);
                             WordDocument doc = new WordDocument(reader);
-                            WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx", DocumentType.Document);
+                            WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx", DocumentType.Document);
                             Converter.Convert(doc, docx);
-                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
+                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
                             break;
                         case ".docm":
                         case ".dot":
                         case ".dotm":
                         case ".dotx":
                         case ".odt":
-                            Convert(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx",
+                            Convert(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx",
                                 WdSaveFormat.wdFormatDocumentDefault);
-                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
+                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
                             break;
                         
                         case ".xls":
                             var xlsConverter = new XlsToXlsx();
-                            xlsConverter.ConvertToXlsxFile(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx");
-                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx";
+                            xlsConverter.ConvertToXlsxFile(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx");
+                            file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx";
                             break;
                     }
 
@@ -322,8 +333,9 @@ namespace TelerikTest
 
                 }
             }
-           // filesPanel.Items[0].Position = new Point(0, 2);
-           // filesPanel.Items[0].Position = new Point(filesPanel.Width - 21, 2);
+            radWaitingBar2.StopWaiting();
+            // filesPanel.Items[0].Position = new Point(0, 2);
+            // filesPanel.Items[0].Position = new Point(filesPanel.Width - 21, 2);
         }
         private void filesPanel_DragEnter(object sender, DragEventArgs e)
         {
@@ -388,19 +400,33 @@ namespace TelerikTest
         private void radPageView1_DragDrop(object sender, DragEventArgs e)
         {
             string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
+           // var dragItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+            var dragItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
 
             //if (!e.Data.GetDataPresent(typeof(ListViewItem))) return;
 
-           // radWaitingBar2.StartWaiting();
-           try
-           {
-                var dragItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
-                if (dragItem.ListView.Name == "filesPanel" || dragItem.ListView.Name == "listView1")
+            // radWaitingBar2.StartWaiting();
+            try
+            {
+               if (dragItem.ListView.Name == "filesPanel" || dragItem.ListView.Name == "listView1")
                 {
                     if (dragItem.ListView.Name == "listView1")
                     {
-                        File.Copy("tempfordrop" + dragItem.Text.Substring(dragItem.Text.LastIndexOf(".")), _foldersList[0] + @"\" + dragItem.Text);
+                        File.Copy("tempfordrop" + dragItem.Text.Substring(dragItem.Text.LastIndexOf(".")), _foldersList[0] + @"\" + dragItem.Text, true);
                         var newFile = _foldersList[0] + @"\" + dragItem.Text;
+                        try
+                        {
+                            using (FileStream stream = File.OpenRead(newFile))
+                            {
+                                stream.Close();
+                            }
+                        }
+                        catch (IOException)
+                        {
+                            MessageBox.Show(@"Файл занят другим приложением, закройте файл и повторите попытку", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
                         if (File.Exists(newFile) && _formats.Any(Path.GetExtension(newFile).ToLower().Contains))
                         {
                             radWaitingBar2.AssociatedControl = filesPanel;
@@ -410,24 +436,24 @@ namespace TelerikTest
                                 case ".doc":
                                     StructuredStorageReader reader = new StructuredStorageReader(file[0]);
                                     WordDocument doc = new WordDocument(reader);
-                                    WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx", DocumentType.Document);
+                                    WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx", DocumentType.Document);
                                     Converter.Convert(doc, docx);
-                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
+                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
                                     break;
                                 case ".docm":
                                 case ".dot":
                                 case ".dotm":
                                 case ".dotx":
                                 case ".odt":
-                                    Convert(newFile, newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + ".docx",
+                                    Convert(newFile, newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx",
                                         WdSaveFormat.wdFormatDocumentDefault);
-                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
+                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
                                     break;
 
                                 case ".xls":
                                     var xlsConverter = new XlsToXlsx();
-                                    xlsConverter.ConvertToXlsxFile(newFile, newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx");
-                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx";
+                                    xlsConverter.ConvertToXlsxFile(newFile, newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx");
+                                    newFile = newFile.Remove(newFile.LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx";
                                     break;
                             }
 
@@ -448,12 +474,21 @@ namespace TelerikTest
                     var filePath = dragItem.ListView.Name == "filesPanel" ? _filesList[dragItem.Index] : _filesList[_filesList.Count - 1];
                     if (!File.Exists(filePath))
                     {
-                        imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])] =
-                            ChangeOpacity(
-                                imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])], 0.7f);
-                        //imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])].Tag =
-                        //   "deleted";
-                        return;
+                        try
+                        {
+                            imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])] =
+                                ChangeOpacity(
+                                    imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])], 0.7f);
+                            //imageList2.Images[imageList2.Images.IndexOfKey(_filesList[filesPanel.SelectedItems[0].Index])].Tag =
+                            //   "deleted";
+                            return;
+                        }
+                        catch (Exception exception)
+                        {
+                           // Console.WriteLine(exception);
+                           // throw;
+                        }
+                        
                     }
                     //radPageView1.Pages.(dragItem.Text);
 
@@ -469,25 +504,25 @@ namespace TelerikTest
                        case ".doc":
                            StructuredStorageReader reader = new StructuredStorageReader(file[0]);
                            WordDocument doc = new WordDocument(reader);
-                           WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx", DocumentType.Document);
+                           WordprocessingDocument docx = WordprocessingDocument.Create(file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx", DocumentType.Document);
                            Converter.Convert(doc, docx);
-                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
-                           break;
+                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
+                            break;
                        case ".docm":
                        case ".dot":
                        case ".dotm":
                        case ".dotx":
                        case ".odt":
-                           Convert(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx",
+                           Convert(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx",
                                WdSaveFormat.wdFormatDocumentDefault);
-                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".docx";
-                           break;
+                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").docx";
+                            break;
 
                        case ".xls":
                            var xlsConverter = new XlsToXlsx();
-                           xlsConverter.ConvertToXlsxFile(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx");
-                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + ".xlsx";
-                           break;
+                           xlsConverter.ConvertToXlsxFile(file[0], file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx");
+                           file[0] = file[0].Remove(file[0].LastIndexOf(".", StringComparison.Ordinal)) + "(" + file[0].Split('.')[1] + ").xlsx";
+                            break;
                    }
                     StartView(file[0], file[0].Split('\\').Last().Split('.')[0]);
                }
@@ -496,6 +531,19 @@ namespace TelerikTest
 
         private void StartView(string filePath, string name)
         {
+            try
+            {
+                using (FileStream stream = File.OpenRead(filePath))
+                {
+                    stream.Close();
+                }
+            }
+            catch (IOException)
+            {
+                MessageBox.Show(@"Файл занят другим приложением, закройте файл и повторите попытку", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             var page = new RadPageViewPage(name);
             radPageView1.Pages.Add(page);
             radPageView1.SelectedPage = page;
@@ -507,31 +555,42 @@ namespace TelerikTest
             {
                 case ".docx":
                 case ".txt":
+                case ".rtf":
                     var editor = new RadRichTextEditor();
                     editor.LayoutMode = DocumentLayoutMode.Paged;
                     editor.ThemeName = "visualStudio2012LightTheme1";
                     editor.KeyUp += new KeyEventHandler(radPageView1_KeyDown);
 
-
-                    //object provider;
-                    if (Path.GetExtension(filePath).ToLower() == ".docx")
+                    switch (Path.GetExtension(filePath).ToLower())
                     {
-                        var provider = new DocxFormatProvider();
-                        using (FileStream inputStream = File.OpenRead(filePath))
-                        {
-                            editor.Document = provider.Import(inputStream);
-                        }
-                    }
-                    else
-                    {
-                        //Encoding utf8WithoutBom = new UTF8Encoding(false);
-                        //Encoding ansi = Encoding.GetEncoding(1251);
-                        //File.WriteAllText(filePath, File.ReadAllText(filePath, ansi), ansi);
-                        var provider = new TxtFormatProvider();
-                        using (Stream inputStream = File.OpenRead(filePath))
-                        {
-                            editor.Document = provider.Import(inputStream);
-                        }
+                        case ".docx":
+                            var providerd = new DocxFormatProvider();
+                            using (FileStream inputStream = File.OpenRead(filePath))
+                            {
+                                editor.Document = providerd.Import(inputStream);
+                            }
+                            break;
+                        case ".txt":
+                            string encoding;
+                            using (var reader = new StreamReader(filePath, Encoding.Default))
+                            {
+                               // reader.Peek(); // you need this!
+                                //encoding = reader.CurrentEncoding.BodyName;
+                                encoding = reader.ReadToEnd();
+                            }
+                            var providert = new TxtFormatProvider();
+                           // using (Stream inputStream = File.OpenRead(filePath))
+                           // {
+                                editor.Document = providert.Import(encoding);
+                           // }
+                            break;
+                        case ".rtf":
+                            var providerr = new RtfFormatProvider();
+                            using (Stream inputStream = File.OpenRead(filePath))
+                            {
+                                editor.Document = providerr.Import(inputStream);
+                            }
+                            break;
                     }
 
                     var ruler = new RadRichTextEditorRuler();
@@ -666,8 +725,8 @@ namespace TelerikTest
 
         private void radPageView1_DragEnter(object sender, DragEventArgs e)
         {
-            // e.Effect = e.Data.GetDataPresent(typeof(ListViewItem)) ? DragDropEffects.Move : DragDropEffects.None;
-            e.Effect = DragDropEffects.All;
+           // e.Effect = e.Data.GetDataPresent(typeof(ListViewItem)) ? DragDropEffects.Move : DragDropEffects.None;
+            e.Effect = DragDropEffects.Move;
         }
 
         private void radPageView1_PageRemoving(object sender, RadPageViewCancelEventArgs e)
@@ -749,14 +808,14 @@ namespace TelerikTest
             }
             catch (Exception e)
             {
-                MessageBox.Show("error");
+                MessageBox.Show(@"Ошибка конвертирования файлов", @"Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 oDoc.Close(ref falseObj, ref oMissing, ref oMissing);
                 oWord.Quit(ref oMissing, ref oMissing, ref oMissing);
                 oDoc = null;
                 oWord = null;
                 throw;
             }
-
+            
         }
         public static Bitmap ChangeOpacity(Image img, float opacityvalue)
         {

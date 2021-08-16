@@ -163,6 +163,7 @@
             // 
             this.radMultiColumnComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.radMultiColumnComboBox1.DropDownStyle = Telerik.WinControls.RadDropDownStyle.DropDownList;
             // 
             // radMultiColumnComboBox1.NestedRadGridView
             // 

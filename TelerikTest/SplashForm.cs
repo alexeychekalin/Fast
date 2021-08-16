@@ -12,14 +12,12 @@ using System.Windows.Forms;
 
 namespace TelerikTest
 {
-    public partial class SplashForm : Form
+    public partial class SplashForm : CSWinFormLayeredWindow.PerPixelAlphaForm
     {
         public SplashForm()
         {
             InitializeComponent();
-            this.AllowTransparency = true;
-            this.BackColor = Color.AliceBlue;//цвет фона  
-            this.TransparencyKey = this.BackColor;//он же будет заменен на прозрачный цвет
+            this.SelectBitmap(Properties.Resources.LoadingNoticeOrig);
         }
 
         //Delegate for cross thread call to close
@@ -37,11 +35,14 @@ namespace TelerikTest
             thread.IsBackground = true;
             thread.SetApartmentState(ApartmentState.STA);
             thread.Start();
+            //Thread.Sleep(3000);
         }
 
         static private void ShowForm()
         {
-            if (splashForm != null) Application.Run(splashForm);
+           // if (splashForm != null) Application.Run(splashForm);
+            splashForm?.Invoke(new MethodInvoker(() => { Application.Run(splashForm); } ));
+
         }
 
         static public void CloseForm()
@@ -69,6 +70,11 @@ namespace TelerikTest
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
