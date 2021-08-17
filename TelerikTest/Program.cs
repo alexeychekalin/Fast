@@ -22,15 +22,11 @@ namespace TelerikTest
            var splash = new SplashForm();
            //splash.StartPosition = FormStartPosition.CenterScreen;
            splash.Show();
-           Thread.Sleep(1000);
-           splash.Close();
-           splash.Dispose();
+           //Thread.Sleep(1000);
 
 
-           RadForm1 mainForm = new RadForm1(); //this takes ages
-           //Thread.Sleep(3000);
-           //SplashForm.CloseForm();
-           Application.Run(mainForm);
+
+
 
             // LICENSE CHECK
 
@@ -41,22 +37,26 @@ namespace TelerikTest
             int value = km.LoadSuretyFile(string.Format(@"{0}\Key.lic", Application.StartupPath), ref lic);
             string productKey = lic.ProductKey;
             //Check valid
-            /*
+            
             if (km.ValidKey(ref productKey))
             {
+                splash.Close();
+                splash.Dispose();
                 RadForm1 mainForm = new RadForm1(); //this takes ages
-                SplashForm.CloseForm();
+               // SplashForm.CloseForm();
                 Application.Run(mainForm);
                // Application.Run(new RadForm1());
             }
             else
             {
+                splash.Close();
+                splash.Dispose();
                 Registration mainForm = new Registration(); //this takes ages
-                SplashForm.CloseForm();
+               // SplashForm.CloseForm();
                 Application.Run(mainForm);
                 //Application.Run(new Registration());
             }
-            */
+            
             //END LICENSE CHECK
             //RadForm1 mainForm = new RadForm1(); //this takes ages
             //Thread.Sleep(3000);

@@ -641,6 +641,7 @@ namespace TelerikTest
                     excel.Dock = DockStyle.Fill;
                     excel.ThemeName = "visualStudio2012LightTheme1";
                     excel.KeyUp += new KeyEventHandler(radPageView1_KeyDown);
+                    
 
                     var ribonExcel = new RadSpreadsheetRibbonBar
                     {
@@ -653,6 +654,7 @@ namespace TelerikTest
 
                         Text = Path.GetFileName(filePath)
                     };
+                    
                     //ribonExcel.GetChildAt(0).GetChildAt(4).GetChildAt(0).GetChildAt(0).GetChildAt(1).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
                     //ribonExcel.GetChildAt(0).GetChildAt(4).GetChildAt(0).GetChildAt(0).GetChildAt(2).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
                     //ribonExcel.GetChildAt(0).GetChildAt(4).GetChildAt(0).GetChildAt(0).GetChildAt(3).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
@@ -683,7 +685,8 @@ namespace TelerikTest
                     if (temPage.Text.Length > 8 && temPage.Text.Contains("*")) temPage.Text = temPage.Text.Substring(0, 8) + @"...*";
                     else
                     {
-                        temPage.Text = temPage.Text.Substring(0, 8) + @"...";
+                        if(temPage.Text.Length > 8)
+                            temPage.Text = temPage.Text.Substring(0, 8) + @"...";
                     }
                 }
             }
@@ -703,6 +706,7 @@ namespace TelerikTest
 
         private void EditorOnDocumentChanged(object sender, EventArgs e)
         {
+            
             var t = (RadRichTextBox) sender;
 
             if (change[radPageView1.Pages.IndexOf(radPageView1.SelectedPage)] == 1 && !radPageView1.SelectedPage.Text.Contains("*"))
@@ -721,6 +725,7 @@ namespace TelerikTest
             {
                 change[radPageView1.Pages.IndexOf(radPageView1.SelectedPage)] = 1;
             }
+            
         }
 
         private void radPageView1_DragEnter(object sender, DragEventArgs e)
@@ -1616,9 +1621,9 @@ namespace TelerikTest
         protected override void Initialize()
         {
             base.Initialize();
-            buttonSaveHTML.Visible = false;
-            buttonSavePlain.Visible = false;
-            buttonSaveRich.Visible = false;
+           // buttonSaveHTML.Visible = false;
+           // buttonSavePlain.Visible = false;
+            //buttonSaveRich.Visible = false;
             buttonXAML.Visible = false;
             CloseButton = false;
             MaximizeButton = false;
