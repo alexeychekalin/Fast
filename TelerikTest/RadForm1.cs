@@ -38,7 +38,8 @@ using Point = System.Drawing.Point;
 using Rectangle = System.Drawing.Rectangle;
 using Word = Microsoft.Office.Interop.Word;
 using IDataObject_Com = System.Runtime.InteropServices.ComTypes.IDataObject;
-
+using CefSharp;
+using CefSharp.WinForms;
 
 namespace TelerikTest
 {
@@ -620,12 +621,20 @@ namespace TelerikTest
                 case ".htm":
                 case ".html":
                 case ".pdf":
-                    WebControl webControl1 = new WebControl();
-                    webControl1.Dock = DockStyle.Fill;
-                    webControl1.Source = new Uri(filePath);
-                    webControl1.KeyUp += new KeyEventHandler(radPageView1_KeyDown);
+                    ChromiumWebBrowser chromeBrowser;
+                    CefSettings settings = new CefSettings();
+                    Cef.Initialize(settings);
+
+                    chromeBrowser = new ChromiumWebBrowser("file:///" + filePath);
+                    chromeBrowser.LifeSpanHandler = new MyCustomLifeSpanHandler();
+                    page.Controls.Add(chromeBrowser);
+                   
+                    //WebControl webControl1 = new WebControl();
+                    //webControl1.Dock = DockStyle.Fill;
+                    //webControl1.Source = new Uri(filePath);
+                    //webControl1.KeyUp += new KeyEventHandler(radPageView1_KeyDown);
                     //radButton12.Visible = true;
-                    page.Controls.Add(webControl1);
+                    // page.Controls.Add(webControl1);
                     break;
                 case ".mht":
                 case ".mhtml":
@@ -633,7 +642,7 @@ namespace TelerikTest
                     webBrowser.Navigate(filePath);
                     webBrowser.Dock = DockStyle.Fill;
                     webBrowser.KeyUp += new KeyEventHandler(radPageView1_KeyDown);
-
+                   
                     page.Controls.Add(webBrowser);
                     break;
                 case ".xlsx":
@@ -1631,6 +1640,37 @@ namespace TelerikTest
             LayoutMode = RibbonLayout.Simplified;
             BuiltInStylesVersion = Telerik.WinForms.Documents.Model.Styles.BuiltInStylesVersion.Office2013;
             ThemeName = "Office2013Light";
+        }
+    }
+
+    public class MyCustomLifeSpanHandler : ILifeSpanHandler
+    {
+        // Load new URL (when clicking a link with target=_blank) in the same frame
+        public bool OnBeforePopup(IWebBrowser chromiumWebBrowser, IBrowser browser, IFrame frame, string targetUrl, string targetFrameName, WindowOpenDisposition targetDisposition, bool userGesture, IPopupFeatures popupFeatures, IWindowInfo windowInfo, IBrowserSettings browserSettings, ref bool noJavascriptAccess, out IWebBrowser newBrowser)
+        {
+            browser.MainFrame.LoadUrl(targetUrl);
+            newBrowser = null;
+            return true;
+        }
+
+        // If you don't implement all of the interface members in the custom class
+        // you will find:
+        // Error CS0535	'MyCustomLifeSpanHandler' does not implement interface member 'ILifeSpanHandler.OnAfterCreated(IWebBrowser, IBrowser)'
+
+        public bool DoClose(IWebBrowser chromiumWebBrowser, IBrowser browser)
+        {
+            // throw new NotImplementedException();
+            return true;
+        }
+
+        public void OnAfterCreated(IWebBrowser chromiumWebBrowser, IBrowser browser)
+        {
+            // throw new NotImplementedException();
+        }
+
+        public void OnBeforeClose(IWebBrowser chromiumWebBrowser, IBrowser browser)
+        {
+            // throw new NotImplementedException();
         }
     }
 }
