@@ -182,7 +182,8 @@ namespace TelerikTest
             {
                 var pos = foldersPanel.PointToClient(new Point(e.X, e.Y));
                 var hit = foldersPanel.HitTest(pos);
-                var dragItem = (ListViewItem) e.Data.GetData(typeof(ListViewItem));
+                var dragItem = (ListViewItem)e.Data.GetData(typeof(ListViewItem));
+                //var dragItem = (ListViewItem) e.Data.GetData(typeof(ListViewItem));
                 if (dragItem.ListView.Name == "listView1")
                 {
                     File.Copy("tempfordrop" + dragItem.Text.Substring(dragItem.Text.LastIndexOf(".")),
