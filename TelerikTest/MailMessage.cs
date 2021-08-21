@@ -221,11 +221,59 @@ namespace TelerikTest
             r.ShowDialog();
         }
 
-       
+        private ListBox filetodelete = new ListBox();
+        private void radMenuItem2_Click(object sender, System.EventArgs e)
+        {
+
+            var message = inbox.GetMessage(Numbermessage);
+            FolderBrowserDialog fb = new FolderBrowserDialog();
+
+            System.Collections.Specialized.StringCollection replacementList = new System.Collections.Specialized.StringCollection();
+
+            foreach (var attachment in message.Attachments)
+                {
+                    if (!listView1.SelectedItems.Contains(listView1.FindItemWithText(attachment.ContentType.Name)))
+                        continue;
+                    using (var stream = File.Create( attachment.ContentType.Name))
+                    {
+                        if (attachment is MessagePart)
+                        {
+                            var part = (MessagePart)attachment;
+
+                            part.Message.WriteTo(stream);
+                        }
+                        else
+                        {
+                            var part = (MimePart)attachment;
+
+                            part.Content.DecodeTo(stream);
+                        }
+                        replacementList.Add( Directory.GetCurrentDirectory() +"\\"+ attachment.ContentType.Name);
+                        stream.Close();
+                    //File.Delete(  Directory.GetCurrentDirectory() +"\\"+ attachment.ContentType.Name);
+                    filetodelete.Items.Add(Directory.GetCurrentDirectory() + "\\" + attachment.ContentType.Name);
+                    }
+            }
+            Clipboard.SetFileDropList(replacementList);
+
+
+        }
 
         private void ListView1_DragEnter_1(object sender, DragEventArgs e)
         {
             
+        }
+
+        private void MailMessage_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            foreach (var f in filetodelete.Items)
+            {File.Delete(f.ToString());
+            }
+        }
+
+        private void SplitContainer1_Panel2_SizeChanged(object sender, EventArgs e)
+        {
+            listView1.Size = splitContainer1.Panel2.Size;
         }
     }
 }

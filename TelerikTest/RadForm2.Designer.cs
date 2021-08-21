@@ -31,28 +31,33 @@
             Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RadForm2));
             this.radButton1 = new Telerik.WinControls.UI.RadButton();
-            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
-            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
-            this.radListView1 = new Telerik.WinControls.UI.RadListView();
-            this.body = new Telerik.WinControls.UI.RadRichTextEditor();
             this.subject = new Telerik.WinControls.UI.RadTextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.radMultiColumnComboBox1 = new Telerik.WinControls.UI.RadMultiColumnComboBox();
             this.office2013LightTheme1 = new Telerik.WinControls.Themes.Office2013LightTheme();
             this.se = new System.Windows.Forms.TextBox();
+            this.radLabel4 = new Telerik.WinControls.UI.RadLabel();
+            this.radListView1 = new Telerik.WinControls.UI.RadListView();
+            this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
+            this.body = new Telerik.WinControls.UI.RadRichTextEditor();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.subject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1.EditorControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1.EditorControl.MasterTemplate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.body)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,25 +71,6 @@
             this.radButton1.Text = "Отправить";
             this.radButton1.ThemeName = "Office2013Light";
             this.radButton1.Click += new System.EventHandler(this.RadButton1_Click);
-            // 
-            // radLabel4
-            // 
-            this.radLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.radLabel4.Location = new System.Drawing.Point(849, 172);
-            this.radLabel4.Name = "radLabel4";
-            this.radLabel4.Size = new System.Drawing.Size(80, 19);
-            this.radLabel4.TabIndex = 16;
-            this.radLabel4.Text = "Приложение";
-            this.radLabel4.ThemeName = "Office2013Light";
-            // 
-            // radLabel3
-            // 
-            this.radLabel3.Location = new System.Drawing.Point(47, 172);
-            this.radLabel3.Name = "radLabel3";
-            this.radLabel3.Size = new System.Drawing.Size(81, 19);
-            this.radLabel3.TabIndex = 15;
-            this.radLabel3.Text = "Содержимое";
-            this.radLabel3.ThemeName = "Office2013Light";
             // 
             // radLabel2
             // 
@@ -103,36 +89,6 @@
             this.radLabel1.TabIndex = 13;
             this.radLabel1.Text = "Получатель";
             this.radLabel1.ThemeName = "Office2013Light";
-            // 
-            // radListView1
-            // 
-            this.radListView1.AllowDrop = true;
-            this.radListView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.radListView1.Location = new System.Drawing.Point(849, 192);
-            this.radListView1.Name = "radListView1";
-            this.radListView1.Size = new System.Drawing.Size(120, 392);
-            this.radListView1.TabIndex = 11;
-            this.radListView1.ThemeName = "Office2013Light";
-            this.radListView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragDrop);
-            this.radListView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragEnter);
-            // 
-            // body
-            // 
-            this.body.AllowDrop = true;
-            this.body.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.body.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(189)))), ((int)(((byte)(232)))));
-            this.body.Location = new System.Drawing.Point(47, 192);
-            this.body.Name = "body";
-            this.body.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(78)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
-            this.body.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
-            this.body.Size = new System.Drawing.Size(796, 392);
-            this.body.TabIndex = 10;
-            this.body.ThemeName = "Office2013Light";
-            this.body.DragDrop += new System.Windows.Forms.DragEventHandler(this.Body_DragDrop);
-            this.body.DragEnter += new System.Windows.Forms.DragEventHandler(this.Body_DragEnter);
             // 
             // subject
             // 
@@ -196,28 +152,96 @@
             // 
             // se
             // 
-            this.se.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.se.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.se.Location = new System.Drawing.Point(47, 22);
             this.se.Multiline = true;
             this.se.Name = "se";
             this.se.Size = new System.Drawing.Size(922, 38);
             this.se.TabIndex = 19;
             // 
+            // radLabel4
+            // 
+            this.radLabel4.Location = new System.Drawing.Point(3, 3);
+            this.radLabel4.Name = "radLabel4";
+            this.radLabel4.Size = new System.Drawing.Size(80, 19);
+            this.radLabel4.TabIndex = 16;
+            this.radLabel4.Text = "Приложение";
+            this.radLabel4.ThemeName = "Office2013Light";
+            // 
+            // radListView1
+            // 
+            this.radListView1.AllowDrop = true;
+            this.radListView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.radListView1.Location = new System.Drawing.Point(5, 24);
+            this.radListView1.Name = "radListView1";
+            this.radListView1.Size = new System.Drawing.Size(104, 351);
+            this.radListView1.TabIndex = 11;
+            this.radListView1.ThemeName = "Office2013Light";
+            this.radListView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragDrop);
+            this.radListView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.RadListView1_DragEnter);
+            // 
+            // radLabel3
+            // 
+            this.radLabel3.Location = new System.Drawing.Point(3, 3);
+            this.radLabel3.Name = "radLabel3";
+            this.radLabel3.Size = new System.Drawing.Size(81, 19);
+            this.radLabel3.TabIndex = 15;
+            this.radLabel3.Text = "Содержимое";
+            this.radLabel3.ThemeName = "Office2013Light";
+            // 
+            // body
+            // 
+            this.body.AllowDrop = true;
+            this.body.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.body.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(156)))), ((int)(((byte)(189)))), ((int)(((byte)(232)))));
+            this.body.Location = new System.Drawing.Point(3, 24);
+            this.body.Name = "body";
+            this.body.SelectionFill = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(78)))), ((int)(((byte)(158)))), ((int)(((byte)(255)))));
+            this.body.SelectionStroke = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(171)))), ((int)(((byte)(171)))));
+            this.body.Size = new System.Drawing.Size(833, 351);
+            this.body.TabIndex = 10;
+            this.body.ThemeName = "Office2013Light";
+            this.body.DragDrop += new System.Windows.Forms.DragEventHandler(this.Body_DragDrop);
+            this.body.DragEnter += new System.Windows.Forms.DragEventHandler(this.Body_DragEnter);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(49, 186);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.body);
+            this.splitContainer1.Panel1.Controls.Add(this.radLabel3);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.radListView1);
+            this.splitContainer1.Panel2.Controls.Add(this.radLabel4);
+            this.splitContainer1.Panel2.SizeChanged += new System.EventHandler(this.SplitContainer1_Panel2_SizeChanged);
+            this.splitContainer1.Size = new System.Drawing.Size(955, 378);
+            this.splitContainer1.SplitterDistance = 839;
+            this.splitContainer1.TabIndex = 20;
+            // 
             // RadForm2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1016, 638);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.se);
             this.Controls.Add(this.radMultiColumnComboBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.radButton1);
-            this.Controls.Add(this.radLabel4);
-            this.Controls.Add(this.radLabel3);
             this.Controls.Add(this.radLabel2);
             this.Controls.Add(this.radLabel1);
-            this.Controls.Add(this.radListView1);
-            this.Controls.Add(this.body);
             this.Controls.Add(this.subject);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RadForm2";
@@ -229,16 +253,22 @@
             this.ThemeName = "Office2013Light";
             this.Load += new System.EventHandler(this.RadForm2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.body)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.subject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1.EditorControl.MasterTemplate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1.EditorControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radMultiColumnComboBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radListView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.body)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel1.PerformLayout();
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -248,16 +278,17 @@
         #endregion
 
         private Telerik.WinControls.UI.RadButton radButton1;
-        private Telerik.WinControls.UI.RadLabel radLabel4;
-        private Telerik.WinControls.UI.RadLabel radLabel3;
         private Telerik.WinControls.UI.RadLabel radLabel2;
         private Telerik.WinControls.UI.RadLabel radLabel1;
-        private Telerik.WinControls.UI.RadListView radListView1;
-        private Telerik.WinControls.UI.RadRichTextEditor body;
         private Telerik.WinControls.UI.RadTextBox subject;
         private System.Windows.Forms.ListBox listBox1;
         private Telerik.WinControls.UI.RadMultiColumnComboBox radMultiColumnComboBox1;
         private Telerik.WinControls.Themes.Office2013LightTheme office2013LightTheme1;
         private System.Windows.Forms.TextBox se;
+        private Telerik.WinControls.UI.RadLabel radLabel4;
+        private Telerik.WinControls.UI.RadListView radListView1;
+        private Telerik.WinControls.UI.RadLabel radLabel3;
+        private Telerik.WinControls.UI.RadRichTextEditor body;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

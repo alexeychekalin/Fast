@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -16,7 +17,7 @@ using Telerik.WinControls.UI;
 using Telerik.WinForms.Documents.FormatProviders.OpenXml.Docx;
 using Telerik.WinForms.Documents.Model;
 using TelerikTest.Properties;
-using Awesomium.Windows.Forms;
+
 using b2xtranslator.StructuredStorage.Reader;
 using b2xtranslator.DocFileFormat;
 using b2xtranslator.OpenXmlLib.WordprocessingML;
@@ -55,7 +56,8 @@ namespace TelerikTest
         Thread receiveThread;
         static string userName;
         static string key;
-        private const string host = "95.165.142.183";
+        //private const string host = "95.165.142.183";
+        private const string host = "127.0.0.1";
         private const int port = 8888;
         static TcpClient client;
         static NetworkStream stream;
@@ -74,6 +76,8 @@ namespace TelerikTest
             RichTextBoxLocalizationProvider.CurrentProvider = RichTextBoxLocalizationProvider.FromFile(@"localization.word.xml");
             SpreadsheetLocalizationProvider.CurrentProvider = SpreadsheetLocalizationProvider.FromFile(@"localization.excel.xml");
             InitializeComponent();
+            //((INotifyCollectionChanged)listBox1.Items).CollectionChanged +=
+            //    listBox1_CollectionChanged;
             imageList3.Images.Add(new Bitmap("вложение.png"));
            //Подтягиваем сохраненные email
            var s = File.ReadAllLines("SavedMail.txt");
@@ -873,7 +877,7 @@ namespace TelerikTest
                 receiveThread.Start(); //старт потока
 
                 listBox1.Items.Add("Добро пожаловать, " + userName);
-
+                Thread.Sleep(100);
                 messagebox.Text = key;
                 SendMessage();
                 messagebox.Text = "";
@@ -888,6 +892,8 @@ namespace TelerikTest
             {
                 RadMessageBox.Show(ex.Message);
             }
+
+            radButton8.Visible = true;
         }
 
         void SendMessage()
@@ -915,6 +921,21 @@ namespace TelerikTest
 
                     string message = builder.ToString();
                     listBox1.Items.Add(message);//вывод сообщения
+                    if (listBox1.Items[listBox1.Items.Count - 1].ToString().Contains("В сети"))
+                    {
+                        listBox3.Items.Clear();
+                        var s = listBox1.Items[listBox1.Items.Count - 1].ToString().Split(';');
+                        foreach (var v in s)
+                        {
+                            listBox3.Items.Add(v);
+                        }
+                       
+                    }
+                    if (listBox1.Items[listBox1.Items.Count - 1].ToString().Contains("покинул чат"))
+                    {
+                        listBox3.Items.Remove(listBox1.Items[listBox1.Items.Count - 1].ToString().Split(':')[0]);
+                    }
+
                 }
                 catch(Exception e)
                 {
@@ -1135,24 +1156,98 @@ namespace TelerikTest
         {
             try
             {
-                IMailFolder inbox;
-                if(radListView1.Columns[1].Text=="Отправитель")
-                 inbox = mailclient.Inbox;
-                else
-                    inbox = mailclient.GetFolder(SpecialFolder.Sent);
 
-                inbox.Open(FolderAccess.ReadWrite );
-                //var message = inbox.GetMessage(System.Convert.ToInt32 (radListView1.Items[radListView1.SelectedIndices[0]]));
 
-                inbox.AddFlags(System.Convert.ToInt32( listBox2.Items[System.Convert.ToInt32(radListView1.Items[radListView1.SelectedIndices[0].ToString()])].ToString())
-                    , MessageFlags.Deleted, true);
+                // radWaitingBar1.AssociatedControl = radListView1;
+                radListView1.Columns[1].Text = "Отправитель";
+                var inbox = mailclient.GetFolder(SpecialFolder.Trash);
+                inbox.Open(FolderAccess.ReadOnly);
 
-               RadButton4_Click(sender,e);
-            
+
+
+                //passbox.Text = "Total messages:" + inbox.Count;
+                //Console.WriteLine();
+                //Console.WriteLine("Recent messages: {0}", inbox.Recent);
+                radListView1.Items.Clear();
+
+
+                listBox2.Items.Clear();
+                radListView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.None);
+                for (int i = inbox.Count - 1; i >= Math.Max(inbox.Count - 40, 0); i--)
+                {
+                    var message = inbox.GetMessage(i);
+
+                    if (message.Subject == null)
+                    {
+                        if (message.Attachments.Count() > 0)
+                        {
+                            ListViewItem listViewItem = new ListViewItem(new string[]
+                            {
+                                "", message.From.OfType<MailboxAddress>().First().Name,
+                                " ", message.Date.ToString("dd.MM.yyyy")
+                            });
+                            listViewItem.ImageIndex = 0;
+
+                            radListView1.Items.Add(listViewItem);
+
+
+                        }
+                        else
+                        {
+                            ListViewItem listViewItem = new ListViewItem(new string[]
+                            {
+                                "", message.From.OfType<MailboxAddress>().First().Name,
+                                " ", message.Date.ToString("dd.MM.yyyy")
+                            });
+
+
+                            radListView1.Items.Add(listViewItem);
+                        }
+
+                    }
+
+                    else
+                    {
+                        if (message.Attachments.Count() > 0)
+                        {
+                            ListViewItem listViewItem = new ListViewItem(new string[]
+                            {
+                                "", message.From.OfType<MailboxAddress>().First().Name,
+                                message.Subject, message.Date.ToString("dd.MM.yyyy")
+                            });
+                            listViewItem.ImageIndex = 0;
+
+                            radListView1.Items.Add(listViewItem);
+
+                        }
+                        else
+                        {
+                            ListViewItem listViewItem = new ListViewItem(
+                                new string[]
+                                {
+                                    "", message.From.OfType<MailboxAddress>().First().Name.ToString(),
+                                    message.Subject.ToString(), message.Date.ToString("dd.MM.yyyy")
+                                });
+
+                            radListView1.Items.Add(listViewItem);
+                        }
+
+                    }
+
+
+
+                    listBox2.Items.Add(i);
+
+
+
+                }
+
+                // radWaitingBar1.AssociatedControl = null;
+
             }
-            catch (Exception exception)
+            catch (Exception ex)
             {
-                RadMessageBox.Show(exception.Message);
+                RadMessageBox.Show(ex.Message);
             }
         }
 
@@ -1167,6 +1262,18 @@ namespace TelerikTest
             else
             {
                 mailclient.Disconnect(true);
+            }
+
+            try
+            {
+                receiveThread.Abort();
+                receiveThread.Join(500);
+
+                Disconnect();
+            }
+            catch
+            {
+
             }
         }
         
@@ -1518,11 +1625,13 @@ namespace TelerikTest
             
             foreach (var d in message.To.Mailboxes)
             {
-                s +=d.Address + ";";
+                if(d.Address != loginbox.Text)
+                    s +=d.Address + ";";
             }
             foreach (var d in message.From.Mailboxes)
             {
-                s += d.Address + ";";
+                if (d.Address != loginbox.Text)
+                        s += d.Address + ";";
             }
 
 
@@ -1623,6 +1732,52 @@ namespace TelerikTest
         private static void ChangeToStar()
         {
             //radPageView1.SelectedPage.Text = radPageView1.SelectedPage.Text + @" * ";
+        }
+
+        private void RadListView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue== (char)Keys.Delete)
+            {
+                try
+                {
+                    IMailFolder inbox;
+                    if (radListView1.Columns[1].Text == "Отправитель")
+                        inbox = mailclient.Inbox;
+                    else
+                        inbox = mailclient.GetFolder(SpecialFolder.Sent);
+
+                    inbox.Open(FolderAccess.ReadWrite);
+                    //var message = inbox.GetMessage(System.Convert.ToInt32 (radListView1.Items[radListView1.SelectedIndices[0]]));
+
+                    inbox.AddFlags(System.Convert.ToInt32(listBox2.Items[System.Convert.ToInt32(radListView1.SelectedIndices[0])].ToString())
+                        , MessageFlags.Deleted, true);
+
+                    RadButton4_Click(sender, e);
+
+                }
+                catch (Exception exception)
+                {
+                    RadMessageBox.Show(exception.Message);
+                }
+            }
+        }
+
+        private void ListBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var to = listBox1.SelectedItem.ToString().Split(':');
+            messagebox.Text = to[0];
+        }
+
+        private void SplitContainer1_Panel2_SizeChanged(object sender, EventArgs e)
+        {
+            listBox1.Width = splitContainer1.Panel2.Width;
+            messagebox.Width = splitContainer1.Panel2.Width;
+            listBox3.Width= splitContainer1.Panel1.Width;
+        }
+        
+        private void ListBox3_MouseClick(object sender, MouseEventArgs e)
+        {
+            messagebox.Text = listBox3.SelectedItem.ToString() + ":";
         }
     }
 

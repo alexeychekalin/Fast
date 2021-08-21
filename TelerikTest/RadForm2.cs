@@ -55,7 +55,7 @@ namespace TelerikTest
                 radMultiColumnComboBox1.Columns[0].HeaderText = "Сохраненные Адресаты";
                 radMultiColumnComboBox1.Columns[0].Width = radMultiColumnComboBox1.Width-25;
             }
-            se.Text = "";
+           // se.Text = "";
 
         }
         public RadForm2(IMailFolder inbox, int num, string connMail, ImapClient mclient, string password, int status,string TO)
@@ -128,11 +128,15 @@ namespace TelerikTest
             }
 
             mailclient.GetFolder(SpecialFolder.Sent).Append(FormatOptions.Default, message);
-
+            var sss = se.Text.Split(';');
             var s = File.ReadAllLines("MyMail.txt");
             if (!s.Contains(this.se.Text))
             {
-                File.AppendAllText("Mymail.txt", this.se.Text + "\n");
+                foreach (var v in sss)
+                {
+                    File.AppendAllText("Mymail.txt", v + "\n");
+                }
+               
             }
 
             MessageBox.Show("Письмо отправлено");
@@ -190,6 +194,11 @@ namespace TelerikTest
         private void RadForm2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void SplitContainer1_Panel2_SizeChanged(object sender, EventArgs e)
+        {
+            radListView1.Size = splitContainer1.Panel2.Size;
         }
     }
 }
